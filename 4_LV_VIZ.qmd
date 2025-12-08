@@ -1,0 +1,63 @@
+# Visualizing dynamics
+```{r, echo = FALSE}
+library(ggplot2)
+library(gganimate)
+library(deSolve)
+library(reshape2)
+```
+
+## Using ggplot to make the plots
+```{r, echo=FALSE}
+
+LV_prey_pred <- function(t, state, param) {
+  with(as.list(c(state, param)), {
+    
+    dV <- (r * V) - (b * V * P)
+    dP <- (a * b * V * P) -  mu * P
+
+    return(list(c(V = dV, P = dP)))
+  })
+}
+
+times <- seq(1,365, 0.1) # 5 years
+param <- c(r= 0.25, b = 0.05, a = 0.5, mu = 0.2)
+states <- c(V = 1,P = 2)
+
+lv_results <- data.frame(ode(y = states, times = times, func = LV_prey_pred, parms = param))
+
+```
+
+Starting from our previous model, here we're going to use graphs to understand our model a bit better. What does this graph look like? Let's use `ggplot2` (though base plot also works!) to graph it. Now remember that our data.frame should be reshaped so that it's a bit easier to work with:
+
+```{r}
+lv_results_melt <- melt(lv_results, id.vars = 'time')
+```
+
+So let's plot it out:
+
+```{r}
+ggplot(lv_results_melt, aes(x = time, y = value, color = variable, group = variable)) + 
+    geom_line() +
+     theme_classic() +
+     xlab("Time (Day)") + 
+     ylab("Abundance") +
+    theme(axis.text = element_text(size = 12))
+```
+
+So what does that tell us, it tells us that we're thinking abut things in a cycle. Now let me show you animations. Making animations without ggplot used to be a clunky back then, but I find them so easy (just an additional coding line) that it's not a gimmick to make.
+
+```{r}
+animation <- ggplot(lv_results_melt, aes(x = time, y = value, color = variable)) +
+  geom_line() +
+  theme_classic() +
+  xlab("Time (Day)") +
+  ylab("Abundance") +
+  transition_reveal(time) +
+  theme(axis.text = element_text(size = 12))
+
+animate(animation, duration = 15) 
+```
+
+So we can see that as the prey population increases, the population of the predator will also increase due to the greater resources. However, as the population of the predator increases, they will predate more of the prey, and the prey decreases and thus the predator decrease well. This leads to the cycles.
+
+## Going further into dynamics

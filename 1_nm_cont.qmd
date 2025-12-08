@@ -1,0 +1,33 @@
+# Segway: Discrete to continuous
+
+Previously, the model we were looking at was in discrete time, but the compartmental model we’re examining now is in continuous time. Discrete time makes intuitive sense to us—we tend to think of our daily lives in terms of days. But a continuous model requires thinking in terms of a continuum: a day can be divided into hours, minutes, seconds, milliseconds, and even finer intervals. This represents the infinitesimal time scale of continuous time. We like this approach because it is mathematically tractable. Remember our original equation is:
+
+$$
+N_{t+1} = N_t(1 + r),
+$$
+
+which we can rearrange to be:
+
+$$
+N_{t+1} - N_t = r(N_t),
+$$
+
+which can be simply explained as the change in the population size between $t$ and $t+1$ is $r(N_t)$. We're taking daily time steps, but we can also take much smaller time steps. To signify this we use the term $\Delta t$ :
+
+$$
+N_{t + \Delta t} - N_t = \Delta t (r) N_t,
+$$
+
+by dividing both sides by $\Delta t$ which we can write as :
+
+$$
+\frac{N_{t + \Delta t} - N_t}{\Delta_t} = r N_{t}
+$$
+
+Now what if we get the $\Delta t$ get really small. It's approaching 0 (never reaching it), but it's smaller and smaller. Then we would get 
+
+$$
+\frac{dN}{dt} = rN(t).
+$$
+
+This shows that we can switch between the continuous and discrete form by thinking about reducing the time-scale. As we make the timesteps smaller and smaller, the discrete form converges to the continuous form.

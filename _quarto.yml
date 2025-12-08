@@ -1,0 +1,34 @@
+project:
+  type: book
+
+book:
+  search: true
+  title: "A gentle introduction to mathematical simulation in R"
+  author: "Damie Pak"
+  date: "11/21/2025"
+  chapters:
+    - index.qmd
+    - 0_intro.qmd
+    - 0_math.qmd
+    - 1_mm.qmd
+    - 1_nm_cont.qmd
+    - 2_LV_MATH.qmd
+    - 3_LV_SOLVE.qmd
+    - 4_LV_VIZ.qmd
+    - 5_Future.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format: html
+html:
+  theme:
+    - cosmo
+    - brand
+pdf:
+  documentclass: scrreprt
+filters:
+  - webr
+
+
+

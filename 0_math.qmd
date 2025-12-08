@@ -1,0 +1,60 @@
+# A short recap of derivatives
+
+We will be working with ordinary differential equations (ODEs), which we describe as functions that include derivatives. For the purpose of jogging our memory, let's remind ourselves what a derivative is.
+
+::: {.callout-tip}
+## Resources to learn derivatives
+I really like the [Calculus in Context](http://www.science.smith.edu/~callahan/intromine.html) which is absolutely free. Check out the chapter for the derivative. Also the famous Paul's Online Notes would be great.
+:::
+
+```{r, echo= FALSE}
+library(ggplot2)
+library(ggimage)
+```
+
+### What is a derivative?
+Fundamentally, a **derivative** describes the **rate of change** as we are interested in how rapidly a quantity changes. For example, in many ecological models, we are often interested in how the size of the population changes over time. However, because all examples of the derivative uses driving as an example, I will also use t
+
+Let's use the quissential car example: How fast am I driving between Point A and Point B?
+
+```{r, echo=FALSE}
+
+x <- seq(0,10,1)
+y <- (0.5 * x) 
+
+linear_car <- data.frame(x,y )
+
+ggplot(linear_car, aes(x = x, y = y)) + geom_line() + theme_classic() 
+```
+
+We can calculate the average velocity as:
+
+$$
+\frac{Point B - Point B}{t_2 - t_1}
+$$
+
+In other words, we're calculating the distance between the points divided by time. And because it's a straight line, the speed is constant! In other words, the velocity of the car is unchanging. Now what is a derivative, formally is:
+
+$$
+\lim_{h\to 0} \frac{f(x + h) - f(x)}{h}
+$$ 
+
+Basically, what if we made h, very very small. It's not going to be 0, but we're basically thinking about thinking of something much smaller than a second. This makes more sense if our little rat has more realistic driving - for anyone who drives, we know that we never keep constant speed as we brake and accelerate through our journey.
+
+
+We can plot it out like so:
+
+
+```{r}
+
+
+
+```
+
+If we think about our speedometer, we can imagine we have a camera that gives us a snapshot of what the speedometer was at a given time. That's essentially what a derivative is, telling us at a point in time how the quantity is changing. 
+
+
+
+## Integrating
+
+Now let's say we have a derivative, so what? Well, with the derivative we're able to then integrate it. 

@@ -1,0 +1,85 @@
+# The Lotka-Volterra Predator Prey model
+
+The **Lotka–Volterra predator–prey model** describes the dynamics between predators and their prey. It was formulated independently by the American scientist Alfred Lotka and the Italian scientist Vito Volterra. In Volterra’s case, his son-in-law asked him to explain why predator fish increased in abundance during the war, when fishing of the prey fish was reduced. This led to Volterra’s seminal work in Nature, where he described the predator–prey cycles.
+
+
+::: {.callout-tip}
+## The original Vito Volterra paper
+Fluctuations in the Abundance of a Species considered Mathematically
+:::
+
+## Building the model from the grounds up
+Let's build the model part-by-part: 
+
+### A world of only prey
+
+For the Lotka–Volterra model, let us first start with the prey. For the sake of the cover that I spent a lot of time drawing, we can think of the prey animals as hares. Let us describe the hares with $V$ (some dark humor in that it's short for “victim”). Now, what is the easiest way to model the population growth? We have already talked about exponential growth, so let’s build the model together:
+
+$$
+\frac{dV}{dt} = rV(t), 
+$$
+
+where $r$ is the intrinsic growth rate. This model simply states that in the absence of the predator, the rabbits will increase exponentially. 
+
+
+### Killed by a predator
+
+Now let us populate our silicon world with a predator, which we describe with $P$. The prey will then be depleted by being caught by the predator. How do we model this? Well, we have this idea from chemistry called the **law of mass action**. The rate at which a prey and a predator will meet is determined by their product: $V(t)P(t)$. But we know that not every meeting will meet with the victim's death so we have the parameter $k$ which is often called the *kill rate* (k):
+
+$$
+\frac{dV}{dt} = rV(t) - kV(t)P(t)
+$$
+
+
+### The predator must eat
+
+Predators must consume prey to produce more of themselves, so we take the above predation term and add another parameter $b$. This is called the **conversion efficiency**, and it tells us the rate at which new individuals are created by the predator catching the prey.
+$$
+\frac{dP}{dt} = bkV(t)P(t)
+$$
+
+And then we have a very simple death term here where $\mu$ is the per-capital mortality rate:
+
+$$
+\frac{dP}{dt} = bkV(t)P(t) - \mu P(t)
+$$
+
+All together the full model looks like this:
+
+$$ 
+\begin{aligned}
+\frac{dV}{dt} = rV(t) - kV(t)P(t) \\
+\frac{dP}{dt} = bkV(t)P(t) - \mu P(t)
+\end{aligned}
+$$
+
+## Checking the units
+
+An important part of checking our mathematical modeling is making sure that the units look right. Let us look at the prey equation and realize that $\frac{dV}{dt}$ is in the units of $\frac{individuals}{time}$. When we look at the equation where
+
+$$
+\frac{dV}{dt} = rV(t),
+$$
+
+we realize that if $V(t)$ is in units of individuals than $r$ should have the units of $\frac{1}{time}$:
+
+$$
+\frac{individuals}{time} = \frac{1}{time} \times individuals
+$$
+
+Now this is a bit harder, how about the predation term: $kV(t)P(t)$? Well let's look at $V(t) P(t)$ which would then be $individuals \times individuals$ or $individuals^2$. For it to equal the left hand side ($\frac{individual}{time}$) then $k$ has to equal $\frac{1}{individual \times time}$. 
+
+
+::: {.callout-tip}
+## Actually the units are actually canceling each other out
+Ok, actually units of $r$ should really be $\frac{individuals}{individuals \times time}$ because the intrinsic growth rate actually describes the growth per *person* per *time*. However, we can see that because individuals appear in both the numerator and the denominator- it cancels out leaving only $\frac{1}{time}$
+:::
+
+Therefore, the full units should look this:
+
+$$
+\frac{individuals}{time} = \frac{1}{time} \times individuals + \frac{1}{individuals \times time} individuals^2
+$$
+
+Try it out with the predator equations!
+

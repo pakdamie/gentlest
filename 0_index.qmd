@@ -1,0 +1,9 @@
+
+# Preface
+This book is a companion to the workshop **“A Gentle Introduction to Mathematical Simulation in R”** (December 11, 2025).
+
+This book is free and available online. The workshop, however, is paid, as you get the perk of attending a lecture. Still, I would love it if you could donate a dollar or so to any charity for Ukraine!
+
+Some general knowledge of calculus would be helpful, especially differential equations—I included a short introductory section as a small recap. Some basic knowledge of R would also be helpful, notably the use of {ggplot2}. I will give a brief introduction to {gganimation} as well.
+
+I plan to expand this book to cover other modeling topics that were not explored in the workshop, such as incorporating delays into models and SIR models. So please stay tuned.
