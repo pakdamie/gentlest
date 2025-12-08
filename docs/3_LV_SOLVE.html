@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>lv_solve</title>
+<title>7&nbsp; Solving the differential equations – A gentle introduction to mathematical simulation in R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -59,11 +59,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./4_LV_VIZ.html" rel="next">
+<link href="./2_LV_MATH.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -73,7 +76,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-a14e3238c51140e99ccc48519b6ed9ce.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-231ef2f9d4ce3268f31ef752336c15d2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -134,22 +137,139 @@ window.Quarto = {
 
 </head>
 
-<body class="fullcontent quarto-light">
+<body class="nav-sidebar floating quarto-light">
 
 <div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./3_LV_SOLVE.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Solving the differential equations</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">A gentle introduction to mathematical simulation in R</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preface</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./0_intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Picasso’s Le Taureau</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./0_math.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">A short recap of derivatives</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./1_mm.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">How does a population grow?</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./1_nm_cont.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Segway: Discrete to continuous</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./2_LV_MATH.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The Lotka-Volterra Predator Prey model</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./3_LV_SOLVE.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Solving the differential equations</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./4_LV_VIZ.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Visualizing dynamics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./5_Future.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Future steps</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#euler-method" id="toc-euler-method" class="nav-link active" data-scroll-target="#euler-method"><span class="header-section-number">7.1</span> Euler method</a></li>
+  <li><a href="#all-this-work-but-euler-method-isnt-great" id="toc-all-this-work-but-euler-method-isnt-great" class="nav-link" data-scroll-target="#all-this-work-but-euler-method-isnt-great"><span class="header-section-number">7.2</span> All this work, but Euler method isn’t great!</a></li>
+  <li><a href="#using-desolve" id="toc-using-desolve" class="nav-link" data-scroll-target="#using-desolve"><span class="header-section-number">7.3</span> Using deSolve</a></li>
+  <li><a href="#checking-the-code" id="toc-checking-the-code" class="nav-link" data-scroll-target="#checking-the-code"><span class="header-section-number">7.4</span> Checking the code</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Solving the differential equations</span></h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<section id="solving-the-differential-equations" class="level1">
-<h1>Solving the differential equations</h1>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
 <p>For simple ODES, we are able to solve it analytically. For example, for the continuous form of population growth we have:</p>
 <p><span class="math display">\[\frac{dN}{dt} = rN(t),
 \]</span></p>
@@ -158,18 +278,18 @@ window.Quarto = {
 N(t) = N_0 e^{rt}.
 \]</span></p>
 <p>But the problem is that for many complex ecological models, we are not able to solve them analytically — we can only solve them by numerical simulation! How do we solve differential equations? Remember the earlier method with the discrete model? Well, that only works because we are working in discrete time (each time step is a day). But when we work in continuous time, we are working in the infinitesimal — think of the smallest unit of time you can imagine, and now imagine all the time smaller than that. So we need to think of a method to project forward. I’m going to show you the simplest method, which is called the Euler method.</p>
-<section id="euler-method" class="level2">
-<h2 class="anchored" data-anchor-id="euler-method">Euler method</h2>
+<section id="euler-method" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="euler-method"><span class="header-section-number">7.1</span> Euler method</h2>
 <p>The Euler method is one way to approximate the solved form of the differential equation. It involves calculating at a predetermined time-step which we call <span class="math inline">\(h\)</span>. And like the discrete population growth model that we worked with, the equation is so:</p>
 <p>$$</p>
 <p>$$</p>
 </section>
-<section id="all-this-work-but-euler-method-isnt-great" class="level2">
-<h2 class="anchored" data-anchor-id="all-this-work-but-euler-method-isnt-great">All this work, but Euler method isn’t great!</h2>
+<section id="all-this-work-but-euler-method-isnt-great" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="all-this-work-but-euler-method-isnt-great"><span class="header-section-number">7.2</span> All this work, but Euler method isn’t great!</h2>
 <p>So generally, the Euler method isn’t very accurate and can be very slow because for it to be accurate, there’s need to be small time-steps and that can be computationally really intensive. So there’s other methods- one that is very common is called Runge-Kutta though the default for the package we’re using uses LSODA. I think you need to be aware of the names.</p>
 </section>
-<section id="using-desolve" class="level2">
-<h2 class="anchored" data-anchor-id="using-desolve">Using deSolve</h2>
+<section id="using-desolve" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="using-desolve"><span class="header-section-number">7.3</span> Using deSolve</h2>
 <p>For a lot of differential equation solving, we use the oldest package called <code>deSolve</code>. This package is very formulaic in what it gives you, you need to give it a function where the output is the derivatives at a time. So generally, we have three inputs: timestep (<code>t</code>), parameters (<code>param</code>), and the variables that will be changing (<code>state</code>).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>LV_prey_pred <span class="ot">&lt;-</span> <span class="cf">function</span>(t, state, param) {</span>
@@ -232,8 +352,8 @@ The default solver in deSolve is called LSODA
 </div>
 </div>
 </section>
-<section id="checking-the-code" class="level2">
-<h2 class="anchored" data-anchor-id="checking-the-code">Checking the code</h2>
+<section id="checking-the-code" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="checking-the-code"><span class="header-section-number">7.4</span> Checking the code</h2>
 <p>As you start having more complex models, you have to be on the look out for errors. We’re all humans, we all make mistakes! One thing we can do is to make situations where we know what the answers will be. This involves turning on and off the flow of water as I call it, or what I call leak checking. For example. If there are no births of the prey, we would expect that the population should monotonically decrease. For example, let’s say I made this really silly mistake:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>LV_prey_pred_mistake <span class="ot">&lt;-</span> <span class="cf">function</span>(t, state, param) {</span>
@@ -267,7 +387,6 @@ The default solver in deSolve is called LSODA
 <p>Suspicious! The fact that the population is increasing must mean that we wrote the equation wrong. These are the ways we test models: we make up scenarios such as turning off birth and/or death to ensure we have the same number of individuals.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -670,6 +789,18 @@ The default solver in deSolve is called LSODA
     }
   });
   </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./2_LV_MATH.html" class="pagination-link" aria-label="The Lotka-Volterra Predator Prey model">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The Lotka-Volterra Predator Prey model</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./4_LV_VIZ.html" class="pagination-link" aria-label="Visualizing dynamics">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Visualizing dynamics</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 
 

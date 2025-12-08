@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>mm</title>
+<title>4&nbsp; How does a population grow? – A gentle introduction to mathematical simulation in R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -59,11 +59,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./1_nm_cont.html" rel="next">
+<link href="./0_math.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -73,7 +76,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-a14e3238c51140e99ccc48519b6ed9ce.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-231ef2f9d4ce3268f31ef752336c15d2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -134,32 +137,151 @@ window.Quarto = {
 
 </head>
 
-<body class="fullcontent quarto-light">
+<body class="nav-sidebar floating quarto-light">
 
 <div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./1_mm.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">How does a population grow?</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">A gentle introduction to mathematical simulation in R</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preface</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./0_intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Picasso’s Le Taureau</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./0_math.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">A short recap of derivatives</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./1_mm.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">How does a population grow?</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./1_nm_cont.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Segway: Discrete to continuous</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./2_LV_MATH.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The Lotka-Volterra Predator Prey model</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./3_LV_SOLVE.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Solving the differential equations</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./4_LV_VIZ.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Visualizing dynamics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./5_Future.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Future steps</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#hello-silicon-world" id="toc-hello-silicon-world" class="nav-link active" data-scroll-target="#hello-silicon-world"><span class="header-section-number">4.1</span> Hello (silicon) world!</a></li>
+  <li><a href="#the-nature-of-births-and-deaths" id="toc-the-nature-of-births-and-deaths" class="nav-link" data-scroll-target="#the-nature-of-births-and-deaths"><span class="header-section-number">4.2</span> The nature of births and deaths</a></li>
+  <li><a href="#what-does-the-future-hold" id="toc-what-does-the-future-hold" class="nav-link" data-scroll-target="#what-does-the-future-hold"><span class="header-section-number">4.3</span> What does the future hold?</a></li>
+  <li><a href="#how-to-code-it" id="toc-how-to-code-it" class="nav-link" data-scroll-target="#how-to-code-it"><span class="header-section-number">4.4</span> How to code it?</a></li>
+  <li><a href="#the-power-of-simulation" id="toc-the-power-of-simulation" class="nav-link" data-scroll-target="#the-power-of-simulation"><span class="header-section-number">4.5</span> The power of simulation</a></li>
+  <li><a href="#plotting-it-out" id="toc-plotting-it-out" class="nav-link" data-scroll-target="#plotting-it-out"><span class="header-section-number">4.6</span> Plotting it out</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">How does a population grow?</span></h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<section id="how-does-a-population-grow" class="level1">
-<h1>How does a population grow?</h1>
-<section id="hello-silicon-world" class="level2">
-<h2 class="anchored" data-anchor-id="hello-silicon-world">Hello (silicon) world!</h2>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="hello-silicon-world" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="hello-silicon-world"><span class="header-section-number">4.1</span> Hello (silicon) world!</h2>
 <p>For our first foray into mathematical modeling, let’s start with the model: <strong>how does the size of a population change over time?</strong> Assume we’re observing a population on an isolated island, <span class="math inline">\(N\)</span> (which stands for the number of individuals), and we must think of the time scale, <span class="math inline">\(t\)</span>. For fast-growing organisms like bacteria, it would make more sense to observe the population over the span of hours, as they grow rapidly. It would be unwise, however, to use hours for a slow-growing oak tree. For this population of interest, let us assume a daily time step.</p>
 <p>The size of the population increases due to new individuals from births or immigration. Likewise, the population decreases due to deaths or from emigration. For simplicity, let’s assume that there are only births and deaths. Mathematically, we can describe the population as: <span class="math display">\[
 N_{t+1} = N_t + Births - Deaths.
 \]</span></p>
 <p>This model assumes <em>discrete</em> time steps where the total population size is the next-time step (<span class="math inline">\(t+1\)</span>) is just the sum of the current timestep (<span class="math inline">\(t\)</span>) with the addition and removal of individuals.</p>
 </section>
-<section id="the-nature-of-births-and-deaths" class="level2">
-<h2 class="anchored" data-anchor-id="the-nature-of-births-and-deaths">The nature of births and deaths</h2>
+<section id="the-nature-of-births-and-deaths" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="the-nature-of-births-and-deaths"><span class="header-section-number">4.2</span> The nature of births and deaths</h2>
 <p>Intuitively, we would imagine that the larger a population is, the more births there would be. So it makes sense that the total number of births would depend on the current population size:</p>
 <p><span class="math display">\[
 Births = b N_t,
@@ -198,8 +320,8 @@ Finite rate of increase
 </div>
 </div>
 </section>
-<section id="what-does-the-future-hold" class="level2">
-<h2 class="anchored" data-anchor-id="what-does-the-future-hold">What does the future hold?</h2>
+<section id="what-does-the-future-hold" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="what-does-the-future-hold"><span class="header-section-number">4.3</span> What does the future hold?</h2>
 <p>The above equation is perfect for when we want to determine the population size at the next time-step. But if we want to start at the initial time point, then it would be as follows:</p>
 <p><span class="math display">\[
 N_{t} = N_0(1+r)^t,
@@ -230,8 +352,8 @@ N_2 &amp;= N_1(1+r) \\
 </div>
 </div>
 </section>
-<section id="how-to-code-it" class="level2">
-<h2 class="anchored" data-anchor-id="how-to-code-it">How to code it?</h2>
+<section id="how-to-code-it" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="how-to-code-it"><span class="header-section-number">4.4</span> How to code it?</h2>
 <p>For coding these types of models, we should use functions. As a rule of thumb, the input for these functions should include the parameters, as these can vary. Think of all the things that could be changed in the mathematical model. So let’s look at this function skeleton here, which I call <code>pop_Growth</code>. Generally, simulations of populations involve <strong>time</strong> (how long you run them for), the <strong>parameters of interest</strong>, and the <strong>initial population size</strong>. Here is the skeleton below:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pop_Growth<span class="ot">&lt;-</span> <span class="cf">function</span>(time, b, d, N0){</span>
@@ -288,8 +410,8 @@ A simple example of vectorization
 </div>
 <p>Congratulations, yon ran your first model!</p>
 </section>
-<section id="the-power-of-simulation" class="level2">
-<h2 class="anchored" data-anchor-id="the-power-of-simulation">The power of simulation</h2>
+<section id="the-power-of-simulation" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="the-power-of-simulation"><span class="header-section-number">4.5</span> The power of simulation</h2>
 <p>The power of simulation is that we can explore different parameter combinations. This allows us to examine models across the entire parameter space, which is important because the dynamics can change depending on the parameters we choose. One way to achieve this is by using a handy function called <code>expand.grid</code>, which allows us to generate all possible combinations of parameters.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>param_grid <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(</span>
@@ -323,8 +445,8 @@ A simple example of vectorization
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="plotting-it-out" class="level2">
-<h2 class="anchored" data-anchor-id="plotting-it-out">Plotting it out</h2>
+<section id="plotting-it-out" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="plotting-it-out"><span class="header-section-number">4.6</span> Plotting it out</h2>
 <p>Plotting out mathematical simulations can be difficult because of the large number of parameter space that we are looking at. So it is important to have a reason. For example, what if we were interested in only how the initial population changes? Then for direct comparision, we would try to keep the other parameters consistent, so let’s subset the data that we need</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>results_subset <span class="ot">&lt;-</span> <span class="fu">subset</span>(results, results<span class="sc">$</span>b <span class="sc">==</span> <span class="fl">0.10</span> <span class="sc">&amp;</span> results<span class="sc">$</span>d <span class="sc">==</span> <span class="fl">0.05</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -350,7 +472,6 @@ A simple example of vectorization
 </div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -753,6 +874,18 @@ A simple example of vectorization
     }
   });
   </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./0_math.html" class="pagination-link" aria-label="A short recap of derivatives">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">A short recap of derivatives</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./1_nm_cont.html" class="pagination-link" aria-label="Segway: Discrete to continuous">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Segway: Discrete to continuous</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 
 

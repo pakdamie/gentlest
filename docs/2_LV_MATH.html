@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>lv_math</title>
+<title>6&nbsp; The Lotka-Volterra Predator Prey model – A gentle introduction to mathematical simulation in R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,11 +24,14 @@ ul.task-list li input[type="checkbox"] {
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./3_LV_SOLVE.html" rel="next">
+<link href="./1_nm_cont.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -38,7 +41,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-a14e3238c51140e99ccc48519b6ed9ce.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-231ef2f9d4ce3268f31ef752336c15d2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -99,22 +102,142 @@ window.Quarto = {
 
 </head>
 
-<body class="fullcontent quarto-light">
+<body class="nav-sidebar floating quarto-light">
 
 <div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./2_LV_MATH.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The Lotka-Volterra Predator Prey model</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">A gentle introduction to mathematical simulation in R</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preface</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./0_intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Picasso’s Le Taureau</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./0_math.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">A short recap of derivatives</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./1_mm.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">How does a population grow?</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./1_nm_cont.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Segway: Discrete to continuous</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./2_LV_MATH.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The Lotka-Volterra Predator Prey model</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./3_LV_SOLVE.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Solving the differential equations</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./4_LV_VIZ.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Visualizing dynamics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./5_Future.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Future steps</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#building-the-model-from-the-grounds-up" id="toc-building-the-model-from-the-grounds-up" class="nav-link active" data-scroll-target="#building-the-model-from-the-grounds-up"><span class="header-section-number">6.1</span> Building the model from the grounds up</a>
+  <ul class="collapse">
+  <li><a href="#a-world-of-only-prey" id="toc-a-world-of-only-prey" class="nav-link" data-scroll-target="#a-world-of-only-prey"><span class="header-section-number">6.1.1</span> A world of only prey</a></li>
+  <li><a href="#killed-by-a-predator" id="toc-killed-by-a-predator" class="nav-link" data-scroll-target="#killed-by-a-predator"><span class="header-section-number">6.1.2</span> Killed by a predator</a></li>
+  <li><a href="#the-predator-must-eat" id="toc-the-predator-must-eat" class="nav-link" data-scroll-target="#the-predator-must-eat"><span class="header-section-number">6.1.3</span> The predator must eat</a></li>
+  </ul></li>
+  <li><a href="#checking-the-units" id="toc-checking-the-units" class="nav-link" data-scroll-target="#checking-the-units"><span class="header-section-number">6.2</span> Checking the units</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The Lotka-Volterra Predator Prey model</span></h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<section id="the-lotka-volterra-predator-prey-model" class="level1">
-<h1>The Lotka-Volterra Predator Prey model</h1>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
 <p>The <strong>Lotka–Volterra predator–prey model</strong> describes the dynamics between predators and their prey. It was formulated independently by the American scientist Alfred Lotka and the Italian scientist Vito Volterra. In Volterra’s case, his son-in-law asked him to explain why predator fish increased in abundance during the war, when fishing of the prey fish was reduced. This led to Volterra’s seminal work in Nature, where he described the predator–prey cycles.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -129,26 +252,26 @@ The original Vito Volterra paper
 <p>Fluctuations in the Abundance of a Species considered Mathematically was published in Nature</p>
 </div>
 </div>
-<section id="building-the-model-from-the-grounds-up" class="level2">
-<h2 class="anchored" data-anchor-id="building-the-model-from-the-grounds-up">Building the model from the grounds up</h2>
+<section id="building-the-model-from-the-grounds-up" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="building-the-model-from-the-grounds-up"><span class="header-section-number">6.1</span> Building the model from the grounds up</h2>
 <p>Let’s build the model part-by-part to better understand it.</p>
-<section id="a-world-of-only-prey" class="level3">
-<h3 class="anchored" data-anchor-id="a-world-of-only-prey">A world of only prey</h3>
+<section id="a-world-of-only-prey" class="level3" data-number="6.1.1">
+<h3 data-number="6.1.1" class="anchored" data-anchor-id="a-world-of-only-prey"><span class="header-section-number">6.1.1</span> A world of only prey</h3>
 <p>For the Lotka–Volterra model, let us first start with the prey. For the sake of the cover that I spent a lot of time drawing, we can think of the prey animals as hares. Let us describe the hares with <span class="math inline">\(V\)</span> (some dark humor in that it’s short for “victim”). Now, what is the easiest way to model the population growth? We have already talked about exponential growth, so let’s build the model together:</p>
 <p><span class="math display">\[
 \frac{dV}{dt} = rV(t),
 \]</span></p>
 <p>where <span class="math inline">\(r\)</span> is the intrinsic growth rate. This model simply states that in the absence of the predator, the rabbits will increase exponentially.</p>
 </section>
-<section id="killed-by-a-predator" class="level3">
-<h3 class="anchored" data-anchor-id="killed-by-a-predator">Killed by a predator</h3>
+<section id="killed-by-a-predator" class="level3" data-number="6.1.2">
+<h3 data-number="6.1.2" class="anchored" data-anchor-id="killed-by-a-predator"><span class="header-section-number">6.1.2</span> Killed by a predator</h3>
 <p>Now let us populate our silicon world with a predator, which we describe with <span class="math inline">\(P\)</span>. The prey will then be depleted by being caught by the predator. How do we model this? Well, we have this idea from chemistry called the <strong>law of mass action</strong>. The rate at which a prey and a predator will meet is determined by their product: <span class="math inline">\(V(t)P(t)\)</span>. But we know that not every meeting will meet with the victim’s death so we have the parameter <span class="math inline">\(k\)</span> which is often called the <em>kill rate</em> (k):</p>
 <p><span class="math display">\[
 \frac{dV}{dt} = rV(t) - kV(t)P(t)
 \]</span></p>
 </section>
-<section id="the-predator-must-eat" class="level3">
-<h3 class="anchored" data-anchor-id="the-predator-must-eat">The predator must eat</h3>
+<section id="the-predator-must-eat" class="level3" data-number="6.1.3">
+<h3 data-number="6.1.3" class="anchored" data-anchor-id="the-predator-must-eat"><span class="header-section-number">6.1.3</span> The predator must eat</h3>
 <p>Predators must consume prey to produce more of themselves, so we take the above predation term and add another parameter <span class="math inline">\(b\)</span>. This is called the <strong>conversion efficiency</strong>, and it tells us the rate at which new individuals are created by the predator catching the prey. <span class="math display">\[
 \frac{dP}{dt} = bkV(t)P(t)
 \]</span></p>
@@ -165,8 +288,8 @@ The original Vito Volterra paper
 \]</span></p>
 </section>
 </section>
-<section id="checking-the-units" class="level2">
-<h2 class="anchored" data-anchor-id="checking-the-units">Checking the units</h2>
+<section id="checking-the-units" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="checking-the-units"><span class="header-section-number">6.2</span> Checking the units</h2>
 <p>An important part of checking our mathematical modeling is making sure that the units look right. Let us look at the prey equation and realize that <span class="math inline">\(\frac{dV}{dt}\)</span> is in the units of <span class="math inline">\(\frac{individuals}{time}\)</span>. When we look at the equation where</p>
 <p><span class="math display">\[
 \frac{dV}{dt} = rV(t),
@@ -196,7 +319,6 @@ Actually the units are actually canceling each other out
 <p>Try it out with the predator equations!</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -599,6 +721,18 @@ Actually the units are actually canceling each other out
     }
   });
   </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./1_nm_cont.html" class="pagination-link" aria-label="Segway: Discrete to continuous">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Segway: Discrete to continuous</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./3_LV_SOLVE.html" class="pagination-link" aria-label="Solving the differential equations">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Solving the differential equations</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 
 
