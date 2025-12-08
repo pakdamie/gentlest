@@ -24,14 +24,26 @@ But the problem is that for many complex ecological models, we are not able to s
 The Euler method is one way to approximate the solved form of the differential equation. It involves calculating at a predetermined time-step which we call $h$. And like the discrete population growth model that we worked with, the equation is so:
 
 $$
-
+y_{n+1} =  y_n + h f(t_n,y_n)
 $$
 
+Let's use the Wikipedia provided one as an example:
 
+$\frac{dy}{dx} = y$ where the initial condiiton is $y(0) = 1$ and the step-size $h$ is 1.
 
+From our initial condition, we know we are starting at $(0,1)$. Now what is the derivative (the $f(t_n, y_n)$? It's $1$! So
 
+$$
+y_1 = y_0 + (1)(1) = 2
+$$
 
+So now we're at $(1,2)$. Now, let's do the same thing. The derivative at $(1,2)$ is $1$. Again, 
 
+$$
+y_2 = y_1 + (1)(1) = 4
+$$
+
+Which means that we're at $(2,4)$. Do this until you understnad what's happening. This is what the basis of numerical simulation is, making tiny little steps. 
 
 ## All this work, but Euler method isn't great!
 
@@ -91,7 +103,7 @@ See you can see the data.frame that includes the time as well as the total abund
 
 ::: {.callout-tip}
 ## The default solver in deSolve is called LSODA
-If you don't define a method in deSolve, it goes to LSODA which switches between two solvers! I think it's worth knowing what the names are BUT it can be a fun read to figure out how they do the algorithim. 
+If you don't define a method in deSolve, it goes to LSODA (Livermore Solver for Ordinary Differential Equations) which switches between two solvers! I think it's worth knowing what the names are BUT it can be a fun read to figure out how they do the algorithim. 
 
 :::
 

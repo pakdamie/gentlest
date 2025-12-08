@@ -1,11 +1,47 @@
 # The Lotka-Volterra Predator Prey model
 
+```{r, echo = FALSE}
+library(ggplot2)
+library(reshape2)
+library(viridis)
+```
+
 The **Lotka–Volterra predator–prey model** describes the dynamics between predators and their prey. It was formulated independently by the American scientist Alfred Lotka and the Italian scientist Vito Volterra. In Volterra’s case, his son-in-law asked him to explain why predator fish increased in abundance during the war, when fishing of the prey fish was reduced. This led to Volterra’s seminal work in Nature, where he described the predator–prey cycles.
+
+```{r, echo = FALSE, warning = FALSE}
+years <-viridisyears <- seq(1910,1923)
+
+Trieste <- c(5.7,8.8,9.5,15.7,14.6,7.6,16.2,15.4,NA,19.9,
+             15.8,13.3, 10.7, 10.2)
+
+Fiume <- c(NA, NA, NA, NA, 11.9, 21.4, 22.1, 21.2,
+           36.4, 27.3, 16.0 ,15.9, 14.8, 10.7)
+
+Venice <- c(21.8, NA,NA,NA,NA,NA,NA,NA,NA,30.9, 25.3,25.9,25.8,26.6)
+
+fish_dat <- data.frame(years, Trieste, Fiume, Venice)
+fish_dat_2 <- melt(fish_dat, id.vars = 'years')
+
+ggplot(fish_dat_2, aes(x = years, y = value,
+                       linetype = variable)) + 
+ geom_point() + 
+ geom_line(linewidth  = 0.8) + 
+ xlab("Years") + 
+ ylab("Percent of cartilaginous fish in fishery") + 
+ scale_x_continuous(breaks = seq(1910, 1923, 1)) + 
+ annotate("rect", fill = "grey", alpha = 0.25, 
+          xmin = 1914, xmax = 1918 ,
+          ymin = -Inf, ymax = Inf) + 
+ theme_classic() + 
+ theme(axis.text = element_text(size = 10, color = 'black'),
+       axis.title = element_text(size = 13, color = 'black'))
+```
+
 
 
 ::: {.callout-tip}
 ## The original Vito Volterra paper
-Fluctuations in the Abundance of a Species considered Mathematically was published in Nature 
+*Fluctuations in the Abundance of a Species considered Mathematically* was published in Nature 
 :::
 
 ## Building the model from the grounds up

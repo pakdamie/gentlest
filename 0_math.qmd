@@ -4,7 +4,7 @@ We will be working with ordinary differential equations (ODEs), which we describ
 
 ::: {.callout-tip}
 ## Resources to learn derivatives
-I really like the [Calculus in Context](http://www.science.smith.edu/~callahan/intromine.html) which is absolutely free. Check out the chapter for the derivative. Also the famous Paul's Online Notes would be great.
+I really like the [Calculus in Context](http://www.science.smith.edu/~callahan/intromine.html) which is absolutely free. Check out the chapter for the derivative. Also the famous Paul's Online Notes would be great. Finally, Otto and Day has a nice appendix on the basic calculus rules you need.
 :::
 
 ```{r, echo= FALSE}
@@ -13,46 +13,29 @@ library(ggimage)
 ```
 
 ### What is a derivative?
-Fundamentally, a **derivative** describes the **rate of change** as we are interested in how rapidly a quantity changes. For example, in many ecological models, we are often interested in how the size of the population changes over time. However, because all examples of the derivative use driving as an example, I will opt to do the same. In the figure below, for example, this is the total distance that I drove
+Fundamentally, a **derivative** describes the **rate of change** as we are interested in how rapidly a quantity changes. For example, in many ecological models, we are often interested in how the size of the population changes over time. Graphically, the derivative can be the tangent line at a specific point:
 
-```{r, echo=FALSE}
+![Placeholder: Derivatives are the slope of the tangent lines (dashed-red lines) at different points ](image/slopes.png){width="667"}
 
-x <- seq(0,10,1)
-y <- (0.5 * x) 
-
-linear_car <- data.frame(x,y )
-
-ggplot(linear_car, aes(x = x, y = y)) + geom_line() + theme_classic() 
-```
-
-We can calculate the average velocity as:
+The more formal definition of a derivative is:
 
 $$
-\frac{Point B - Point B}{t_2 - t_1}
-$$
-
-In other words, we're calculating the distance between the points divided by time. And because it's a straight line, the speed is constant! In other words, the velocity of the car is unchanging. Now what is a derivative, formally is:
-
-$$
-\lim_{h\to 0} \frac{f(x + h) - f(x)}{h}
+\lim_{h\to 0} \frac{f(x + h) - f(x)}{h}.
 $$ 
 
-Basically, what if we made h, very very small. It's not going to be 0, but we're basically thinking about thinking of something much smaller than a second. This makes more sense if our little rat has more realistic driving - for anyone who drives, we know that we never keep constant speed as we brake and accelerate through our journey.
+This equation says that the derivative of a function $f$ at a point $x$ is found by taking the difference between the function's value at $x+h$
+and at $x$, and then dividing by $h$. We then imagine making $h$ very, very small---that is, letting $h$
+approach $0$. The limit of this expression as $h \to 0$ gives the instantaneous rate of change of the function at $x$, which is the derivative.
 
+In a car analogy, the speedometer shows how fast we are going. As I'm driving through Boston, there may be moments when I'm driving very fast but then brake suddenly. Let's say you're taking a photo from the back seat of the car. When you take a snapshot, you're capturing the instantaneous rate of change.
 
-We can plot it out like so:
+## Connection with differential equations
 
+Differential equations as described by Otto and Day are:  *"An equation relating the derivative of a variable to a function of the variable itself..."*. Most of the time, we're trying to solve for the function.
 
-```{r}
+Examples include:
 
+$$\frac{dN}{dt} = rN(t), 
+$$
 
-
-```
-
-If we think about our speedometer, we can imagine we have a camera that gives us a snapshot of what the speedometer was at a given time. That's essentially what a derivative is, telling us at a point in time how the quantity is changing. 
-
-
-
-## Integrating
-
-Now let's say we have a derivative, so what? Well, with the derivative we're able to then integrate it. 
+where we have the function $N(t)$ as well as the derivative of $N(t)$. So this is a differential equation.

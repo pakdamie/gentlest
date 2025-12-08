@@ -24,17 +24,17 @@
     "href": "0_math.html",
     "title": "3  A short recap of derivatives",
     "section": "",
-    "text": "3.0.1 What is a derivative?\nWe will be working with ordinary differential equations (ODEs), which we describe as functions that include derivatives. For the purpose of jogging our memory, let’s remind ourselves what a derivative is.\nFundamentally, a derivative describes the rate of change as we are interested in how rapidly a quantity changes. For example, in many ecological models, we are often interested in how the size of the population changes over time. However, because all examples of the derivative use driving as an example, I will opt to do the same. In the figure below, for example, this is the total distance that I drove\nWe can calculate the average velocity as:\n\\[\n\\frac{Point B - Point B}{t_2 - t_1}\n\\]\nIn other words, we’re calculating the distance between the points divided by time. And because it’s a straight line, the speed is constant! In other words, the velocity of the car is unchanging. Now what is a derivative, formally is:\n\\[\n\\lim_{h\\to 0} \\frac{f(x + h) - f(x)}{h}\n\\]\nBasically, what if we made h, very very small. It’s not going to be 0, but we’re basically thinking about thinking of something much smaller than a second. This makes more sense if our little rat has more realistic driving - for anyone who drives, we know that we never keep constant speed as we brake and accelerate through our journey.\nWe can plot it out like so:\nIf we think about our speedometer, we can imagine we have a camera that gives us a snapshot of what the speedometer was at a given time. That’s essentially what a derivative is, telling us at a point in time how the quantity is changing.",
+    "text": "3.0.1 What is a derivative?\nWe will be working with ordinary differential equations (ODEs), which we describe as functions that include derivatives. For the purpose of jogging our memory, let’s remind ourselves what a derivative is.\nFundamentally, a derivative describes the rate of change as we are interested in how rapidly a quantity changes. For example, in many ecological models, we are often interested in how the size of the population changes over time. Graphically, the derivative can be the tangent line at a specific point:\nThe more formal definition of a derivative is:\n\\[\n\\lim_{h\\to 0} \\frac{f(x + h) - f(x)}{h}.\n\\]\nThis equation says that the derivative of a function \\(f\\) at a point \\(x\\) is found by taking the difference between the function’s value at \\(x+h\\) and at \\(x\\), and then dividing by \\(h\\). We then imagine making \\(h\\) very, very small—that is, letting \\(h\\) approach \\(0\\). The limit of this expression as \\(h \\to 0\\) gives the instantaneous rate of change of the function at \\(x\\), which is the derivative.\nIn a car analogy, the speedometer shows how fast we are going. As I’m driving through Boston, there may be moments when I’m driving very fast but then brake suddenly. Let’s say you’re taking a photo from the back seat of the car. When you take a snapshot, you’re capturing the instantaneous rate of change.",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>A short recap of derivatives</span>"
     ]
   },
   {
-    "objectID": "0_math.html#integrating",
-    "href": "0_math.html#integrating",
+    "objectID": "0_math.html#connection-with-differential-equations",
+    "href": "0_math.html#connection-with-differential-equations",
     "title": "3  A short recap of derivatives",
-    "section": "3.1 Integrating",
-    "text": "3.1 Integrating\nNow let’s say we have a derivative, so what? Well, with the derivative we’re able to then integrate it.",
+    "section": "3.1 Connection with differential equations",
+    "text": "3.1 Connection with differential equations\nDifferential equations as described by Otto and Day are: “An equation relating the derivative of a variable to a function of the variable itself…”. Most of the time, we’re trying to solve for the function.\nExamples include:\n\\[\\frac{dN}{dt} = rN(t),\n\\]\nwhere we have the function \\(N(t)\\) as well as the derivative of \\(N(t)\\). So this is a differential equation.",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>A short recap of derivatives</span>"
     ]
@@ -144,7 +144,7 @@
     "href": "3_LV_SOLVE.html",
     "title": "7  Solving the differential equations",
     "section": "",
-    "text": "7.1 Euler method\nFor simple ODES, we are able to solve it analytically. For example, for the continuous form of population growth we have:\n\\[\\frac{dN}{dt} = rN(t),\n\\]\nand when we solve it:\n\\[\nN(t) = N_0 e^{rt}.\n\\]\nBut the problem is that for many complex ecological models, we are not able to solve them analytically — we can only solve them by numerical simulation! How do we solve differential equations? Remember the earlier method with the discrete model? Well, that only works because we are working in discrete time (each time step is a day). But when we work in continuous time, we are working in the infinitesimal — think of the smallest unit of time you can imagine, and now imagine all the time smaller than that. So we need to think of a method to project forward. I’m going to show you the simplest method, which is called the Euler method.\nThe Euler method is one way to approximate the solved form of the differential equation. It involves calculating at a predetermined time-step which we call \\(h\\). And like the discrete population growth model that we worked with, the equation is so:\n$$\n$$",
+    "text": "7.1 Euler method\nFor simple ODES, we are able to solve it analytically. For example, for the continuous form of population growth we have:\n\\[\\frac{dN}{dt} = rN(t),\n\\]\nand when we solve it:\n\\[\nN(t) = N_0 e^{rt}.\n\\]\nBut the problem is that for many complex ecological models, we are not able to solve them analytically — we can only solve them by numerical simulation! How do we solve differential equations? Remember the earlier method with the discrete model? Well, that only works because we are working in discrete time (each time step is a day). But when we work in continuous time, we are working in the infinitesimal — think of the smallest unit of time you can imagine, and now imagine all the time smaller than that. So we need to think of a method to project forward. I’m going to show you the simplest method, which is called the Euler method.\nThe Euler method is one way to approximate the solved form of the differential equation. It involves calculating at a predetermined time-step which we call \\(h\\). And like the discrete population growth model that we worked with, the equation is so:\n\\[\ny_{n+1} =  y_n + h f(t_n,y_n)\n\\]\nLet’s use the Wikipedia provided one as an example:\n\\(\\frac{dy}{dx} = y\\) where the initial condiiton is \\(y(0) = 1\\) and the step-size \\(h\\) is 1.\nFrom our initial condition, we know we are starting at \\((0,1)\\). Now what is the derivative (the \\(f(t_n, y_n)\\)? It’s \\(1\\)! So\n\\[\ny_1 = y_0 + (1)(1) = 2\n\\]\nSo now we’re at \\((1,2)\\). Now, let’s do the same thing. The derivative at \\((1,2)\\) is \\(1\\). Again,\n\\[\ny_2 = y_1 + (1)(1) = 4\n\\]\nWhich means that we’re at \\((2,4)\\). Do this until you understnad what’s happening. This is what the basis of numerical simulation is, making tiny little steps.",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Solving the differential equations</span>"
     ]
@@ -164,7 +164,7 @@
     "href": "3_LV_SOLVE.html#using-desolve",
     "title": "7  Solving the differential equations",
     "section": "7.3 Using deSolve",
-    "text": "7.3 Using deSolve\nFor a lot of differential equation solving, we use the oldest package called deSolve. This package is very formulaic in what it gives you, you need to give it a function where the output is the derivatives at a time. So generally, we have three inputs: timestep (t), parameters (param), and the variables that will be changing (state).\n\nLV_prey_pred &lt;- function(t, state, param) {\n}\n\nand let’s fill it:\n\nLV_prey_pred &lt;- function(t, state, param) {\n  with(as.list(c(state, param)), {\n    \n    dV &lt;- (r * V) - (b * V * P)\n    dP &lt;- (a * b * V * P) -  mu * P\n\n    return(list(c(V = dV, P = dP)))\n  })\n}\n\nSo this is the model function ourself, but remember when we’re solving a differential equation what do we need: (1) how long to run the model, (2) what are the parameter values and (3) what is the initial abundance? For time, how about we look at 5 years?\n\ntimes &lt;- 1:(365 * 5) # 5 years\n\nAnd for parameters, we need to think about the rates and that everything would be in time. The model itself is agnostic to time, nothing about the model formulation would change if we want to work in terms of a month or a year, only the rates which we would have to convert.\n\nparam &lt;- c(r= 1, b = 0.02, a = 0.5, mu = 0.2)\n\nand the states are:\n\nstates &lt;- c(V = 1,P = 2)\n\n\nlv_results &lt;- ode(y = states, times = times, func = LV_prey_pred, parms = param)\n\nhead(lv_results, 10)\n\n      time            V          P\n [1,]    1   1.00000000   2.000000\n [2,]    2   2.62085998   1.665226\n [3,]    3   6.90863176   1.425013\n [4,]    4  18.27762397   1.311295\n [5,]    5  48.35844067   1.462670\n [6,]    6 126.56372216   2.703989\n [7,]    7 300.08735342  17.260930\n [8,]    8 111.03698385 231.692474\n [9,]    9   1.71795304 248.082152\n[10,]   10   0.05126931 204.020707\n\n\nSee you can see the data.frame that includes the time as well as the total abundnace of the prey and predator.\n\n\n\n\n\n\nThe default solver in deSolve is called LSODA\n\n\n\nIf you don’t define a method in deSolve, it goes to LSODA which switches between two solvers! I think it’s worth knowing what the names are BUT it can be a fun read to figure out how they do the algorithim.",
+    "text": "7.3 Using deSolve\nFor a lot of differential equation solving, we use the oldest package called deSolve. This package is very formulaic in what it gives you, you need to give it a function where the output is the derivatives at a time. So generally, we have three inputs: timestep (t), parameters (param), and the variables that will be changing (state).\n\nLV_prey_pred &lt;- function(t, state, param) {\n}\n\nand let’s fill it:\n\nLV_prey_pred &lt;- function(t, state, param) {\n  with(as.list(c(state, param)), {\n    \n    dV &lt;- (r * V) - (b * V * P)\n    dP &lt;- (a * b * V * P) -  mu * P\n\n    return(list(c(V = dV, P = dP)))\n  })\n}\n\nSo this is the model function ourself, but remember when we’re solving a differential equation what do we need: (1) how long to run the model, (2) what are the parameter values and (3) what is the initial abundance? For time, how about we look at 5 years?\n\ntimes &lt;- 1:(365 * 5) # 5 years\n\nAnd for parameters, we need to think about the rates and that everything would be in time. The model itself is agnostic to time, nothing about the model formulation would change if we want to work in terms of a month or a year, only the rates which we would have to convert.\n\nparam &lt;- c(r= 1, b = 0.02, a = 0.5, mu = 0.2)\n\nand the states are:\n\nstates &lt;- c(V = 1,P = 2)\n\n\nlv_results &lt;- ode(y = states, times = times, func = LV_prey_pred, parms = param)\n\nhead(lv_results, 10)\n\n      time            V          P\n [1,]    1   1.00000000   2.000000\n [2,]    2   2.62085998   1.665226\n [3,]    3   6.90863176   1.425013\n [4,]    4  18.27762397   1.311295\n [5,]    5  48.35844067   1.462670\n [6,]    6 126.56372216   2.703989\n [7,]    7 300.08735342  17.260930\n [8,]    8 111.03698385 231.692474\n [9,]    9   1.71795304 248.082152\n[10,]   10   0.05126931 204.020707\n\n\nSee you can see the data.frame that includes the time as well as the total abundnace of the prey and predator.\n\n\n\n\n\n\nThe default solver in deSolve is called LSODA\n\n\n\nIf you don’t define a method in deSolve, it goes to LSODA (Livermore Solver for Ordinary Differential Equations) which switches between two solvers! I think it’s worth knowing what the names are BUT it can be a fun read to figure out how they do the algorithim.",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Solving the differential equations</span>"
     ]
@@ -197,6 +197,46 @@
     "text": "8.2 Going further into dynamics",
     "crumbs": [
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Visualizing dynamics</span>"
+    ]
+  },
+  {
+    "objectID": "5_Future.html",
+    "href": "5_Future.html",
+    "title": "9  Future steps",
+    "section": "",
+    "text": "9.1 Making the Lotka-Voltera Predator Prey Model more realistic\nAs an exercise, can you think of ways to make the model more realistic? This could be a good way to practice differential equation modeling. For example, consider the assumptions we made in the model:",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Future steps</span>"
+    ]
+  },
+  {
+    "objectID": "5_Future.html#making-the-lotka-voltera-predator-prey-model-more-realistic",
+    "href": "5_Future.html#making-the-lotka-voltera-predator-prey-model-more-realistic",
+    "title": "9  Future steps",
+    "section": "",
+    "text": "Prey grow exponentially. (In reality, the population growth of rabbits is probably limited by available vegetation.)\nThe consumption of prey increases linearly with prey density. (In reality, predators can become satiated.)",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Future steps</span>"
+    ]
+  },
+  {
+    "objectID": "5_Future.html#moving-to-other-ode-models",
+    "href": "5_Future.html#moving-to-other-ode-models",
+    "title": "9  Future steps",
+    "section": "9.2 Moving to other ODE models",
+    "text": "9.2 Moving to other ODE models\nThere is a lot of similarity between the Lotka–Volterra predator–prey model and the epidemic model (also known as the SIR model). Notably, the rate at which individuals are infected is also governed by the Law of Mass Action.",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Future steps</span>"
+    ]
+  },
+  {
+    "objectID": "5_Future.html#the-book",
+    "href": "5_Future.html#the-book",
+    "title": "9  Future steps",
+    "section": "9.3 The book",
+    "text": "9.3 The book\nI’m hoping to add more chapters to this book.",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Future steps</span>"
     ]
   }
 ]
