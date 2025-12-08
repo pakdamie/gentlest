@@ -5,11 +5,11 @@ The **Lotka–Volterra predator–prey model** describes the dynamics between pr
 
 ::: {.callout-tip}
 ## The original Vito Volterra paper
-Fluctuations in the Abundance of a Species considered Mathematically
+Fluctuations in the Abundance of a Species considered Mathematically was published in Nature 
 :::
 
 ## Building the model from the grounds up
-Let's build the model part-by-part: 
+Let's build the model part-by-part to better understand it.
 
 ### A world of only prey
 

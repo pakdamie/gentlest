@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>5&nbsp; Segway: Discrete to continuous – A gentle introduction to mathematical simulation in R</title>
+<title>lv_math</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,14 +24,11 @@ ul.task-list li input[type="checkbox"] {
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./2_LV_MATH.html" rel="next">
-<link href="./1_mm.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -41,7 +38,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-231ef2f9d4ce3268f31ef752336c15d2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-a14e3238c51140e99ccc48519b6ed9ce.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -102,153 +99,105 @@ window.Quarto = {
 
 </head>
 
-<body class="nav-sidebar floating quarto-light">
+<body class="fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./1_nm_cont.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Segway: Discrete to continuous</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
-      </button>
-    </div>
-  </nav>
-</header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
-    <div class="sidebar-title mb-0 py-0">
-      <a href="./">A gentle introduction to mathematical simulation in R</a> 
-    </div>
-      </div>
-        <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
-        </div>
-        </div>
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preface</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./0_intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Picasso’s Le Taureau</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./0_math.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">A short recap of derivatives</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./1_mm.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">How does a population grow?</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./1_nm_cont.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Segway: Discrete to continuous</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./2_LV_MATH.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The Lotka-Volterra Predator Prey model</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./3_LV_SOLVE.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Solving the differential equations</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./4_LV_VIZ.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Visualizing dynamics</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./5_Future.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Future steps</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">References</span></a>
-  </div>
-</li>
-    </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
-    </div>
+    
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Segway: Discrete to continuous</span></h1>
+
+
+
+<section id="the-lotka-volterra-predator-prey-model" class="level1">
+<h1>The Lotka-Volterra Predator Prey model</h1>
+<p>The <strong>Lotka–Volterra predator–prey model</strong> describes the dynamics between predators and their prey. It was formulated independently by the American scientist Alfred Lotka and the Italian scientist Vito Volterra. In Volterra’s case, his son-in-law asked him to explain why predator fish increased in abundance during the war, when fishing of the prey fish was reduced. This led to Volterra’s seminal work in Nature, where he described the predator–prey cycles.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-
-
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<p>Previously, the model we were looking at was in discrete time, but the compartmental model we’re examining now is in continuous time. Discrete time makes intuitive sense to us—we tend to think of our daily lives in terms of days. But a continuous model requires thinking in terms of a continuum: a day can be divided into hours, minutes, seconds, milliseconds, and even finer intervals. This represents the infinitesimal time scale of continuous time. We like this approach because it is mathematically tractable. Remember our original equation is:</p>
+<div class="callout-title-container flex-fill">
+The original Vito Volterra paper
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Fluctuations in the Abundance of a Species considered Mathematically was published in Nature</p>
+</div>
+</div>
+<section id="building-the-model-from-the-grounds-up" class="level2">
+<h2 class="anchored" data-anchor-id="building-the-model-from-the-grounds-up">Building the model from the grounds up</h2>
+<p>Let’s build the model part-by-part to better understand it.</p>
+<section id="a-world-of-only-prey" class="level3">
+<h3 class="anchored" data-anchor-id="a-world-of-only-prey">A world of only prey</h3>
+<p>For the Lotka–Volterra model, let us first start with the prey. For the sake of the cover that I spent a lot of time drawing, we can think of the prey animals as hares. Let us describe the hares with <span class="math inline">\(V\)</span> (some dark humor in that it’s short for “victim”). Now, what is the easiest way to model the population growth? We have already talked about exponential growth, so let’s build the model together:</p>
 <p><span class="math display">\[
-N_{t+1} = N_t(1 + r),
+\frac{dV}{dt} = rV(t),
 \]</span></p>
-<p>which we can rearrange to be:</p>
+<p>where <span class="math inline">\(r\)</span> is the intrinsic growth rate. This model simply states that in the absence of the predator, the rabbits will increase exponentially.</p>
+</section>
+<section id="killed-by-a-predator" class="level3">
+<h3 class="anchored" data-anchor-id="killed-by-a-predator">Killed by a predator</h3>
+<p>Now let us populate our silicon world with a predator, which we describe with <span class="math inline">\(P\)</span>. The prey will then be depleted by being caught by the predator. How do we model this? Well, we have this idea from chemistry called the <strong>law of mass action</strong>. The rate at which a prey and a predator will meet is determined by their product: <span class="math inline">\(V(t)P(t)\)</span>. But we know that not every meeting will meet with the victim’s death so we have the parameter <span class="math inline">\(k\)</span> which is often called the <em>kill rate</em> (k):</p>
 <p><span class="math display">\[
-N_{t+1} - N_t = r(N_t),
+\frac{dV}{dt} = rV(t) - kV(t)P(t)
 \]</span></p>
-<p>which can be simply explained as the change in the population size between <span class="math inline">\(t\)</span> and <span class="math inline">\(t+1\)</span> is <span class="math inline">\(r(N_t)\)</span>. We’re taking daily time steps, but we can also take much smaller time steps. To signify this we use the term <span class="math inline">\(\Delta t\)</span> :</p>
+</section>
+<section id="the-predator-must-eat" class="level3">
+<h3 class="anchored" data-anchor-id="the-predator-must-eat">The predator must eat</h3>
+<p>Predators must consume prey to produce more of themselves, so we take the above predation term and add another parameter <span class="math inline">\(b\)</span>. This is called the <strong>conversion efficiency</strong>, and it tells us the rate at which new individuals are created by the predator catching the prey. <span class="math display">\[
+\frac{dP}{dt} = bkV(t)P(t)
+\]</span></p>
+<p>And then we have a very simple death term here where <span class="math inline">\(\mu\)</span> is the per-capital mortality rate:</p>
 <p><span class="math display">\[
-N_{t + \Delta t} - N_t = \Delta t (r) N_t,
+\frac{dP}{dt} = bkV(t)P(t) - \mu P(t)
 \]</span></p>
-<p>by dividing both sides by <span class="math inline">\(\Delta t\)</span> which we can write as :</p>
+<p>All together the full model looks like this:</p>
 <p><span class="math display">\[
-\frac{N_{t + \Delta t} - N_t}{\Delta_t} = r N_{t}
+\begin{aligned}
+\frac{dV}{dt} = rV(t) - kV(t)P(t) \\
+\frac{dP}{dt} = bkV(t)P(t) - \mu P(t)
+\end{aligned}
 \]</span></p>
-<p>Now what if we get the <span class="math inline">\(\Delta t\)</span> get really small. It’s approaching 0 (never reaching it), but it’s smaller and smaller. Then we would get</p>
+</section>
+</section>
+<section id="checking-the-units" class="level2">
+<h2 class="anchored" data-anchor-id="checking-the-units">Checking the units</h2>
+<p>An important part of checking our mathematical modeling is making sure that the units look right. Let us look at the prey equation and realize that <span class="math inline">\(\frac{dV}{dt}\)</span> is in the units of <span class="math inline">\(\frac{individuals}{time}\)</span>. When we look at the equation where</p>
 <p><span class="math display">\[
-\frac{dN}{dt} = rN(t).
+\frac{dV}{dt} = rV(t),
 \]</span></p>
-<p>This shows that we can switch between the continuous and discrete form by thinking about reducing the time-scale. As we make the timesteps smaller and smaller, the discrete form converges to the continuous form.</p>
+<p>we realize that if <span class="math inline">\(V(t)\)</span> is in units of individuals than <span class="math inline">\(r\)</span> should have the units of <span class="math inline">\(\frac{1}{time}\)</span>:</p>
+<p><span class="math display">\[
+\frac{individuals}{time} = \frac{1}{time} \times individuals
+\]</span></p>
+<p>Now this is a bit harder, how about the predation term: <span class="math inline">\(kV(t)P(t)\)</span>? Well let’s look at <span class="math inline">\(V(t) P(t)\)</span> which would then be <span class="math inline">\(individuals \times individuals\)</span> or <span class="math inline">\(individuals^2\)</span>. For it to equal the left hand side (<span class="math inline">\(\frac{individual}{time}\)</span>) then <span class="math inline">\(k\)</span> has to equal <span class="math inline">\(\frac{1}{individual \times time}\)</span>.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Actually the units are actually canceling each other out
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Ok, actually units of <span class="math inline">\(r\)</span> should really be <span class="math inline">\(\frac{individuals}{individuals \times time}\)</span> because the intrinsic growth rate actually describes the growth per <em>person</em> per <em>time</em>. However, we can see that because individuals appear in both the numerator and the denominator- it cancels out leaving only <span class="math inline">\(\frac{1}{time}\)</span></p>
+</div>
+</div>
+<p>Therefore, the full units should look this:</p>
+<p><span class="math display">\[
+\frac{individuals}{time} = \frac{1}{time} \times individuals + \frac{1}{individuals \times time} individuals^2
+\]</span></p>
+<p>Try it out with the predator equations!</p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -650,18 +599,6 @@ N_{t + \Delta t} - N_t = \Delta t (r) N_t,
     }
   });
   </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="./1_mm.html" class="pagination-link" aria-label="How does a population grow?">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">How does a population grow?</span></span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="./2_LV_MATH.html" class="pagination-link" aria-label="The Lotka-Volterra Predator Prey model">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The Lotka-Volterra Predator Prey model</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 
 

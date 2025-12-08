@@ -13,9 +13,7 @@ library(ggimage)
 ```
 
 ### What is a derivative?
-Fundamentally, a **derivative** describes the **rate of change** as we are interested in how rapidly a quantity changes. For example, in many ecological models, we are often interested in how the size of the population changes over time. However, because all examples of the derivative uses driving as an example, I will also use t
-
-Let's use the quissential car example: How fast am I driving between Point A and Point B?
+Fundamentally, a **derivative** describes the **rate of change** as we are interested in how rapidly a quantity changes. For example, in many ecological models, we are often interested in how the size of the population changes over time. However, because all examples of the derivative use driving as an example, I will opt to do the same. In the figure below, for example, this is the total distance that I drove
 
 ```{r, echo=FALSE}
 

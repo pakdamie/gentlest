@@ -1,6 +1,6 @@
 project:
-  type: book
-
+  type: website
+  output-dir: docs
 book:
   search: true
   title: "A gentle introduction to mathematical simulation in R"

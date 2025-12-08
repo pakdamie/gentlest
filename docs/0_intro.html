@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>5&nbsp; Segway: Discrete to continuous – A gentle introduction to mathematical simulation in R</title>
+<title>intro</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,14 +24,11 @@ ul.task-list li input[type="checkbox"] {
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./2_LV_MATH.html" rel="next">
-<link href="./1_mm.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -41,7 +38,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-231ef2f9d4ce3268f31ef752336c15d2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-a14e3238c51140e99ccc48519b6ed9ce.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -70,185 +67,50 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
-<body class="nav-sidebar floating quarto-light">
+<body class="fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./1_nm_cont.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Segway: Discrete to continuous</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
-      </button>
-    </div>
-  </nav>
-</header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
-    <div class="sidebar-title mb-0 py-0">
-      <a href="./">A gentle introduction to mathematical simulation in R</a> 
-    </div>
-      </div>
-        <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
-        </div>
-        </div>
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preface</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./0_intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Picasso’s Le Taureau</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./0_math.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">A short recap of derivatives</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./1_mm.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">How does a population grow?</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./1_nm_cont.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Segway: Discrete to continuous</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./2_LV_MATH.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The Lotka-Volterra Predator Prey model</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./3_LV_SOLVE.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Solving the differential equations</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./4_LV_VIZ.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Visualizing dynamics</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./5_Future.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Future steps</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">References</span></a>
-  </div>
-</li>
-    </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
-    </div>
+    
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Segway: Discrete to continuous</span></h1>
+
+
+
+<section id="picassos-le-taureau" class="level1">
+<h1>Picasso’s Le Taureau</h1>
+<p><em>It is impossible to wholly capture the entirety of complex biological processes.</em> Mathematical models simplify complexity allowing us to glean insights on the biological mechanisms and predict how systems can change if we vary a parameter. It is not uncommon for mathematical modeling to be likened to art. Indeed, Pablo Picasso’s <em>Le Taureau</em> (1945) shows his six litographs that ranges from the realistic, anatomically drawing of the bull to the geometric representation where only the “essence” of the bull remains.</p>
+<p>What is a bull? To Picasso, one only needs the stalwart body, the four legs, and the prominent horns. The simplified form captures a large proportion of what bulls look. Similarly, mathematical models aim to generalize, by stripping the complexity and extraneous features, is able to capture the commonality of unique processes.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://upload.wikimedia.org/wikipedia/en/e/ed/Pablo-Picasso-The-Bull.jpg" class="img-fluid figure-img" width="667"></p>
+<figcaption>Ranging from naturalist depiction to stripped down simplification, Picasso’s Le Taureau is a apt metaphor fro mathematical modeling of biological processes.</figcaption>
+</figure>
+</div>
+<p>While there are many different types of mathematical modeling techniques, this book is focused on using ordinary differential equations (ODE’s) and using R to simulate the output.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Books I recommend
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For those that are interested in good resources, I highly recommend <strong>A Biologist’s Guide to Mathematical Modeling in Ecology and Evolution</strong> by Otto and Day. As well as <strong>Modeling Life: The Mathematics of Biological Systems</strong> by Garfinkel et al.&nbsp;While more focused on disease, I also loved Bjornstad’s <strong>Epidemics</strong> due to his approach of showing how to code the math.</p>
+</div>
 </div>
 
 
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<p>Previously, the model we were looking at was in discrete time, but the compartmental model we’re examining now is in continuous time. Discrete time makes intuitive sense to us—we tend to think of our daily lives in terms of days. But a continuous model requires thinking in terms of a continuum: a day can be divided into hours, minutes, seconds, milliseconds, and even finer intervals. This represents the infinitesimal time scale of continuous time. We like this approach because it is mathematically tractable. Remember our original equation is:</p>
-<p><span class="math display">\[
-N_{t+1} = N_t(1 + r),
-\]</span></p>
-<p>which we can rearrange to be:</p>
-<p><span class="math display">\[
-N_{t+1} - N_t = r(N_t),
-\]</span></p>
-<p>which can be simply explained as the change in the population size between <span class="math inline">\(t\)</span> and <span class="math inline">\(t+1\)</span> is <span class="math inline">\(r(N_t)\)</span>. We’re taking daily time steps, but we can also take much smaller time steps. To signify this we use the term <span class="math inline">\(\Delta t\)</span> :</p>
-<p><span class="math display">\[
-N_{t + \Delta t} - N_t = \Delta t (r) N_t,
-\]</span></p>
-<p>by dividing both sides by <span class="math inline">\(\Delta t\)</span> which we can write as :</p>
-<p><span class="math display">\[
-\frac{N_{t + \Delta t} - N_t}{\Delta_t} = r N_{t}
-\]</span></p>
-<p>Now what if we get the <span class="math inline">\(\Delta t\)</span> get really small. It’s approaching 0 (never reaching it), but it’s smaller and smaller. Then we would get</p>
-<p><span class="math display">\[
-\frac{dN}{dt} = rN(t).
-\]</span></p>
-<p>This shows that we can switch between the continuous and discrete form by thinking about reducing the time-scale. As we make the timesteps smaller and smaller, the discrete form converges to the continuous form.</p>
-
-
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -650,18 +512,6 @@ N_{t + \Delta t} - N_t = \Delta t (r) N_t,
     }
   });
   </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="./1_mm.html" class="pagination-link" aria-label="How does a population grow?">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">How does a population grow?</span></span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="./2_LV_MATH.html" class="pagination-link" aria-label="The Lotka-Volterra Predator Prey model">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The Lotka-Volterra Predator Prey model</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 
 
