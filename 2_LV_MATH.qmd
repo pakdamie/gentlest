@@ -1,6 +1,6 @@
 # The Lotka-Volterra Predator Prey model
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, warning = FALSE}
 library(ggplot2)
 library(reshape2)
 library(viridis)
@@ -9,6 +9,7 @@ library(viridis)
 The **Lotka–Volterra predator–prey model** describes the dynamics between predators and their prey. It was formulated independently by the American scientist Alfred Lotka and the Italian scientist Vito Volterra. In Volterra’s case, his son-in-law asked him to explain why predator fish increased in abundance during the war, when fishing of the prey fish was reduced. This led to Volterra’s seminal work in Nature, where he described the predator–prey cycles.
 
 ```{r, echo = FALSE, warning = FALSE}
+#| fig-cap: "The percentage of predatory fishes across the years. Volterra was motivated by the increase in the predatory fishes doing World War 1 (grey box) as fishing of the prey fishes ceded."
 years <-viridisyears <- seq(1910,1923)
 
 Trieste <- c(5.7,8.8,9.5,15.7,14.6,7.6,16.2,15.4,NA,19.9,
@@ -40,8 +41,8 @@ ggplot(fish_dat_2, aes(x = years, y = value,
 
 
 ::: {.callout-tip}
-## The original Vito Volterra paper
-*Fluctuations in the Abundance of a Species considered Mathematically* was published in Nature 
+## The original papers
+*Fluctuations in the Abundance of a Species considered Mathematically* by @volterra1927fluctuations was published in Nature. *Analytical note on certain rhythmic relations in organic systems* by @lotka1920analytical was published in PNAS.
 :::
 
 ## Building the model from the grounds up

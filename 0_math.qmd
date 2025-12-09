@@ -4,7 +4,7 @@ We will be working with ordinary differential equations (ODEs), which we describ
 
 ::: {.callout-tip}
 ## Resources to learn derivatives
-I really like the [Calculus in Context](http://www.science.smith.edu/~callahan/intromine.html) which is absolutely free. Check out the chapter for the derivative. Also the famous Paul's Online Notes would be great. Finally, Otto and Day has a nice appendix on the basic calculus rules you need.
+I really like the [Calculus in Context](http://www.science.smith.edu/~callahan/intromine.html) which is absolutely free. Check out the chapter for the derivative. Also the famous Paul's Online Notes would be great. Finally, @otto2011biologist has a nice appendix on the basic calculus rules that you will need to know.
 :::
 
 ```{r, echo= FALSE}
@@ -31,11 +31,8 @@ In a car analogy, the speedometer shows how fast we are going. As I'm driving th
 
 ## Connection with differential equations
 
-Differential equations as described by Otto and Day are:  *"An equation relating the derivative of a variable to a function of the variable itself..."*. Most of the time, we're trying to solve for the function.
-
-Examples include:
-
-$$\frac{dN}{dt} = rN(t), 
+As described by @otto2011biologist, a differential equation is *"An equation relating the derivative of a variable to a function of the variable itself..."*. For example, 
+$$\frac{dN(t)}{dt} = rN(t)
 $$
 
-where we have the function $N(t)$ as well as the derivative of $N(t)$. So this is a differential equation.
+is a differential equation. We include both the function $N(t)$ as well as the derivative $\frac{dN(t)}{dt}$. When we're dealing with differential equations, most of the time we're trying to solve for the function. 

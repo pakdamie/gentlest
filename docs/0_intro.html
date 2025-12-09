@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -197,15 +217,15 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p><em>It is impossible to wholly capture the entirety of complex biological processes.</em> Mathematical models simplify complexity allowing us to glean insights on the biological mechanisms and predict how systems can change if we vary a parameter. It is not uncommon for mathematical modeling to be likened to art. Indeed, Pablo Picasso’s <em>Le Taureau</em> (1945) shows his six litographs that ranges from the realistic, anatomically drawing of the bull to the geometric representation where only the “essence” of the bull remains.</p>
-<p>What is a bull? To Picasso, one only needs the stalwart body, the four legs, and the prominent horns. The simplified form captures a large proportion of what bulls look. Similarly, mathematical models aim to generalize, by stripping the complexity and extraneous features, is able to capture the commonality of unique processes.</p>
+<p><em>It is impossible to fully capture the complexity of biological processes.</em> Mathematical models simplify complexity allowing us to glean insights on the biological mechanisms and predict how systems can change if we vary a parameter. It is not uncommon for mathematical modeling to be likened to art. Indeed, <strong>Pablo Picasso’s Le Taureau (1945)</strong> is a collection of six lithographs that range from a realistic, anatomically accurate drawing of the bull to a geometric representation in which only the “essence” of the bull remains.</p>
+<p>What is a bull? To Picasso, one only needs the stalwart body, the four legs, and the prominent horns. The simplified form captures a large proportion of what bulls look. Similarly, mathematical models aim to generalize by stripping away complexity and extraneous features, allowing them to capture the commonalities among unique processes.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://upload.wikimedia.org/wikipedia/en/e/ed/Pablo-Picasso-The-Bull.jpg" class="img-fluid figure-img" width="667"></p>
 <figcaption>Ranging from naturalist depiction to stripped down simplification, Picasso’s Le Taureau is a apt metaphor fro mathematical modeling of biological processes.</figcaption>
 </figure>
 </div>
-<p>While there are many different types of mathematical modeling techniques, this book is focused on using ordinary differential equations (ODE’s) and using R to simulate the output.</p>
+<p>While there are many different types of mathematical modeling techniques, this book is focused on using <strong>ordinary differential equations</strong> (ODEs) and using R to simulate the output.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -216,11 +236,22 @@ Books I recommend
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>For those that are interested in good resources, I highly recommend <strong>A Biologist’s Guide to Mathematical Modeling in Ecology and Evolution</strong> by Otto and Day. As well as <strong>Modeling Life: The Mathematics of Biological Systems</strong> by Garfinkel et al.&nbsp;While more focused on disease, I also loved Bjornstad’s <strong>Epidemics</strong> due to his approach of showing how to code the math.</p>
+<p>For those that are interested in good resources, I highly recommend <strong>A Biologist’s Guide to Mathematical Modeling in Ecology and Evolution</strong> by <span class="citation" data-cites="otto2011biologist">Otto and Day (<a href="references.html#ref-otto2011biologist" role="doc-biblioref">2011</a>)</span>. As well as <strong>Modeling Life: The Mathematics of Biological Systems</strong> by <span class="citation" data-cites="garfinkel2017modeling">Garfinkel, Shevtsov, and Guo (<a href="references.html#ref-garfinkel2017modeling" role="doc-biblioref">2017</a>)</span>. While more focused on disease, I also love <strong>Epidemics</strong> by <span class="citation" data-cites="bjornstad2018epidemics">Bjørnstad (<a href="references.html#ref-bjornstad2018epidemics" role="doc-biblioref">2018</a>)</span> due to his approach of showing how to code the math.</p>
 </div>
 </div>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-bjornstad2018epidemics" class="csl-entry" role="listitem">
+Bjørnstad, Ottar N. 2018. <span>“Epidemics.”</span> <em>Models and Data Using R: Springer International Publishing</em> 318.
+</div>
+<div id="ref-garfinkel2017modeling" class="csl-entry" role="listitem">
+Garfinkel, Alan, Jane Shevtsov, and Yina Guo. 2017. <em>Modeling Life: The Mathematics of Biological Systems</em>. Springer.
+</div>
+<div id="ref-otto2011biologist" class="csl-entry" role="listitem">
+Otto, Sarah P, and Troy Day. 2011. <span>“A Biologist’s Guide to Mathematical Modeling in Ecology and Evolution.”</span> In <em>A Biologist’s Guide to Mathematical Modeling in Ecology and Evolution</em>. Princeton University Press.
+</div>
+</div>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

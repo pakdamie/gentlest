@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -244,7 +264,7 @@ Resources to learn derivatives
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>I really like the <a href="http://www.science.smith.edu/~callahan/intromine.html">Calculus in Context</a> which is absolutely free. Check out the chapter for the derivative. Also the famous Paul’s Online Notes would be great. Finally, Otto and Day has a nice appendix on the basic calculus rules you need.</p>
+<p>I really like the <a href="http://www.science.smith.edu/~callahan/intromine.html">Calculus in Context</a> which is absolutely free. Check out the chapter for the derivative. Also the famous Paul’s Online Notes would be great. Finally, <span class="citation" data-cites="otto2011biologist">Otto and Day (<a href="references.html#ref-otto2011biologist" role="doc-biblioref">2011</a>)</span> has a nice appendix on the basic calculus rules that you will need to know.</p>
 </div>
 </div>
 <section id="what-is-a-derivative" class="level3" data-number="3.0.1">
@@ -265,13 +285,16 @@ Resources to learn derivatives
 </section>
 <section id="connection-with-differential-equations" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="connection-with-differential-equations"><span class="header-section-number">3.1</span> Connection with differential equations</h2>
-<p>Differential equations as described by Otto and Day are: <em>“An equation relating the derivative of a variable to a function of the variable itself…”</em>. Most of the time, we’re trying to solve for the function.</p>
-<p>Examples include:</p>
-<p><span class="math display">\[\frac{dN}{dt} = rN(t),
+<p>As described by <span class="citation" data-cites="otto2011biologist">Otto and Day (<a href="references.html#ref-otto2011biologist" role="doc-biblioref">2011</a>)</span>, a differential equation is <em>“An equation relating the derivative of a variable to a function of the variable itself…”</em>. For example, <span class="math display">\[\frac{dN(t)}{dt} = rN(t)
 \]</span></p>
-<p>where we have the function <span class="math inline">\(N(t)\)</span> as well as the derivative of <span class="math inline">\(N(t)\)</span>. So this is a differential equation.</p>
+<p>is a differential equation. We include both the function <span class="math inline">\(N(t)\)</span> as well as the derivative <span class="math inline">\(\frac{dN(t)}{dt}\)</span>. When we’re dealing with differential equations, most of the time we’re trying to solve for the function.</p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-otto2011biologist" class="csl-entry" role="listitem">
+Otto, Sarah P, and Troy Day. 2011. <span>“A Biologist’s Guide to Mathematical Modeling in Ecology and Evolution.”</span> In <em>A Biologist’s Guide to Mathematical Modeling in Ecology and Evolution</em>. Princeton University Press.
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->

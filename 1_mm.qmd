@@ -104,6 +104,8 @@ Now we have the model equation: $N_t = N_0 (1+r)^t$. What is the output that we 
 
 ::: {.callout-tip}
 ## A simple example of vectorization
+
+Vectorization means that the operation are applied to the entire vector:
 ```{r}
 x = seq(1,5)
 
@@ -131,7 +133,7 @@ head(popGrowth_df, 10)
 
 ```
 
-Congratulations, yon ran your first model!
+Congratulations, you ran your first model!
 
 ## The power of simulation
 

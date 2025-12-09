@@ -1,15 +1,16 @@
 
 # Picasso's Le Taureau
-*It is impossible to wholly capture the entirety of complex biological processes.* Mathematical models simplify complexity allowing us to glean insights on the biological mechanisms and predict how systems can change if we vary a parameter. It is not uncommon for mathematical modeling to be likened to art. Indeed,  Pablo Picasso's *Le Taureau* (1945) shows his six litographs that ranges from the realistic, anatomically drawing of the bull to the geometric representation where only the "essence" of the bull remains. 
 
-What is a bull? To Picasso, one only needs the stalwart body, the four legs, and the prominent horns. The simplified form captures a large proportion of what bulls look. Similarly,  mathematical models aim to generalize, by stripping the complexity and extraneous features, is able to capture the commonality of unique processes.
+*It is impossible to fully capture the complexity of biological processes.* Mathematical models simplify complexity allowing us to glean insights on the biological mechanisms and predict how systems can change if we vary a parameter. It is not uncommon for mathematical modeling to be likened to art. Indeed, **Pablo Picasso's Le Taureau (1945)** is a collection of six lithographs that range from a realistic, anatomically accurate drawing of the bull to a geometric representation in which only the “essence” of the bull remains.
+
+What is a bull? To Picasso, one only needs the stalwart body, the four legs, and the prominent horns. The simplified form captures a large proportion of what bulls look. Similarly, mathematical models aim to generalize by stripping away complexity and extraneous features, allowing them to capture the commonalities among unique processes.
 
 ![Ranging from naturalist depiction to stripped down simplification, Picasso's Le Taureau is a apt metaphor fro mathematical modeling of biological processes.](https://upload.wikimedia.org/wikipedia/en/e/ed/Pablo-Picasso-The-Bull.jpg){width="667"}
 
-While there are many different types of mathematical modeling techniques, this book is focused on using ordinary differential equations (ODE's) and using R to simulate the output.
+While there are many different types of mathematical modeling techniques, this book is focused on using **ordinary differential equations** (ODEs) and using R to simulate the output.
 
 ::: {.callout-tip}
 ## Books I recommend
-For those that are interested in good resources, I highly recommend **A Biologist's Guide to Mathematical Modeling in Ecology and Evolution** by Otto and Day. As well as **Modeling Life: The Mathematics of Biological Systems** by Garfinkel et al. While more focused on disease, I also loved Bjornstad's **Epidemics** due to his approach of showing how to code the math.
+For those that are interested in good resources, I highly recommend **A Biologist's Guide to Mathematical Modeling in Ecology and Evolution** by @otto2011biologist. As well as **Modeling Life: The Mathematics of Biological Systems** by @garfinkel2017modeling. While more focused on disease, I also love **Epidemics** by @bjornstad2018epidemics due to his approach of showing how to code the math.
 
 :::

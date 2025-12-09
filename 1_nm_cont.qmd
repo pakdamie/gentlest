@@ -30,4 +30,4 @@ $$
 \frac{dN}{dt} = rN(t).
 $$
 
-This shows that we can switch between the continuous and discrete form by thinking about reducing the time-scale. As we make the timesteps smaller and smaller, the discrete form converges to the continuous form.
+This shows that we can switch between the continuous and discrete form by thinking about reducing the time-scale. **As we make the timesteps smaller and smaller, the discrete form converges to the continuous form.**

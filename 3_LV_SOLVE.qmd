@@ -4,7 +4,6 @@
 library(deSolve)
 ```
 
-
 For simple ODES, we are able to solve it analytically. For example, for the continuous form of population growth we have:
 
 $$\frac{dN}{dt} = rN(t),

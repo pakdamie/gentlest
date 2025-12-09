@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -246,9 +266,10 @@ window.Quarto = {
 <p>The <strong>Lotka–Volterra predator–prey model</strong> describes the dynamics between predators and their prey. It was formulated independently by the American scientist Alfred Lotka and the Italian scientist Vito Volterra. In Volterra’s case, his son-in-law asked him to explain why predator fish increased in abundance during the war, when fishing of the prey fish was reduced. This led to Volterra’s seminal work in Nature, where he described the predator–prey cycles.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div>
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2_LV_MATH_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>The percentage of predatory fishes across the years. Volterra was motivated by the increase in the predatory fishes doing World War 1 (grey box) as fishing of the prey fishes ceded.</figcaption>
 </figure>
 </div>
 </div>
@@ -259,11 +280,11 @@ window.Quarto = {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-The original Vito Volterra paper
+The original papers
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><em>Fluctuations in the Abundance of a Species considered Mathematically</em> was published in Nature</p>
+<p><em>Fluctuations in the Abundance of a Species considered Mathematically</em> by <span class="citation" data-cites="volterra1927fluctuations">Volterra (<a href="references.html#ref-volterra1927fluctuations" role="doc-biblioref">1927</a>)</span> was published in Nature. <em>Analytical note on certain rhythmic relations in organic systems</em> by <span class="citation" data-cites="lotka1920analytical">Lotka (<a href="references.html#ref-lotka1920analytical" role="doc-biblioref">1920</a>)</span> was published in PNAS.</p>
 </div>
 </div>
 <section id="building-the-model-from-the-grounds-up" class="level2" data-number="6.1">
@@ -333,6 +354,14 @@ Actually the units are actually canceling each other out
 <p>Try it out with the predator equations!</p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-lotka1920analytical" class="csl-entry" role="listitem">
+Lotka, Alfred J. 1920. <span>“Analytical Note on Certain Rhythmic Relations in Organic Systems.”</span> <em>Proceedings of the National Academy of Sciences</em> 6 (7): 410–15.
+</div>
+<div id="ref-volterra1927fluctuations" class="csl-entry" role="listitem">
+Volterra, Vito. 1927. <span>“Fluctuations in the Abundance of a Species Considered Mathematically.”</span> <em>Nature</em> 119 (2983): 12–13.
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->
