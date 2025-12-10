@@ -144,7 +144,7 @@ Now this suggests that the model is neutral, but what if we're interested in cas
 
 $$ 
 \begin{aligned}
-\frac{dV}{dt} &= rV(t)(1-\frac{V(t)}/{C}) - kV(t)P(t) \\
+\frac{dV}{dt} &= rV(t)(1-\frac{V(t)}{C}) - kV(t)P(t) \\
 \frac{dP}{dt} &= bkV(t)P(t) - \mu P(t)
 \end{aligned},
 $$
