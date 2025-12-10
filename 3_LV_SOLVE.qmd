@@ -64,8 +64,8 @@ and let's fill it:
 LV_prey_pred <- function(t, state, param) {
   with(as.list(c(state, param)), {
     
-    dV <- (r * V) - (b * V * P)
-    dP <- (a * b * V * P) -  mu * P
+    dV <- (r * V) - (k * V * P)
+    dP <- (a * k * V * P) -  mu * P
 
     return(list(c(V = dV, P = dP)))
   })
@@ -82,7 +82,7 @@ times <- 1:(365 * 5) # 5 years
 And for parameters, we need to think about the rates and that everything would be in time. The model itself is agnostic to time, nothing about the model formulation would change if we want to work in terms of a month or a year, only the rates which we would have to convert. 
 
 ```{r}
-param <- c(r= 1, b = 0.02, a = 0.5, mu = 0.2)
+param <- c(r= 1, k = 0.02, a = 0.5, mu = 0.2)
 ```
 
 and the states are:
@@ -113,8 +113,8 @@ As you start having more complex models, you have to be on the look out for erro
 LV_prey_pred_mistake <- function(t, state, param) {
   with(as.list(c(state, param)), {
     
-    dV <- (r * V) + (b * V * P) # The number of prey increases... with predation
-    dP <- (a * b * V * P) -  mu * P
+    dV <- (r * V) + (k * V * P) # The number of prey increases... with predation
+    dP <- (a * k * V * P) -  mu * P
 
     return(list(c(V = dV, P = dP)))
   })

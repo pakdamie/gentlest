@@ -1,0 +1,265 @@
+---
+title: "A gentle introduction to mathematical simulation in R"
+format: html
+---
+## Required packages
+```{r}
+library(deSolve) #Differential equation solver
+library(reshape2) #Data.frame formatter
+library(ggplot2)
+library(gganimate)
+```
+
+# 1. How does a population grow?
+## 1A.1: Writing a function to generalize population model
+
+```{r}
+pop_Growth <- function(){
+  ______
+  ______
+}
+```
+
+## 1A.2: Simulating and seeing the output
+
+```{r}
+head(______, )
+```
+
+## 1B.1: Creating a grid of parameter options
+
+```{r}
+param_grid <- expand.grid(______)
+
+param_grid
+```
+
+## 1B.2: Multiple simulations
+
+```{r}
+results <- do.call(
+  rbind,
+  lapply(______))
+```
+
+## 1B.3: Plotting it out
+
+```{r}
+results_subset <- subset(results, _______ & ________)
+```
+
+```{r}
+ggplot(results_subset, aes(x = time_step, y = N, group = as.factor(N0), color = as.factor(N0))) + 
+  geom_point() + 
+  geom_line()+ 
+  xlab("Time (days)") + 
+  ylab("Abundance") + 
+  labs(color = "N0") +
+  theme_classic() + 
+  theme(axis.text = element_text(size = 13),
+       axis.title = element_text(size = 14))
+```
+
+
+# 2. LOTKA-VOLTERRA PREDATOR PREY MODEL (MODEL)
+
+## 2A.1: Creating the deSolve function
+
+```{r}
+LV_prey_pred <- function(t, state, param) {
+  with(as.list(c(state, param)), {
+  ______
+  ______
+ return(list(c(V = dV, P = dP)))
+  })
+}
+
+```
+
+## 2A.2: Choosing the initial conditions
+
+```{r}
+times <- _____________
+param <- c(r= 1, k = 0.02, a = 0.5, mu = 0.2)
+states <- c(V = 1 ,P = 2)
+```
+
+## 2A.3: Running the simulation
+```{r}
+lv_results <- ode(y =_____________, times = _____________, func =_____________ , parms = _____________)
+
+head(lv_results, 10)
+```
+
+## 2A.4: Running the simulation
+
+```{r}
+lv_results <- ode(y =_____________, times = _____________, func =_____________ , parms = _____________)
+
+head(lv_results, 10)
+```
+
+## 2A.5: Catching the error
+
+```{r}
+LV_prey_pred_mistake <- function(t, state, param) {
+  with(as.list(c(state, param)), {
+    
+    dV <- (r * V) + (k * V * P) # The number of prey increases... with predation
+    dP <- (a * k * V * P) -  mu * P
+
+    return(list(c(V = dV, P = dP)))
+  })
+}
+```
+
+```{r}
+param_no_b <- param
+param_no_b["____"] <- ____
+```
+
+```{r}
+lv_test_no_b <- data.frame(ode(y = ______, times = ______, func = ______, parms = ______))
+```
+
+```{r}
+plot(lv_test_no_b[,_____], type = 'l',xlab = "Time", ylab = "Abundance of prey")
+```
+
+# 3. LOTKA-VOLTERRA PREDATOR PREY MODEL (VISUALIZING)
+
+## 3A.1: Melting the output
+
+```{r}
+lv_results_melt <- melt(______, id.vars = ______)
+```
+
+## 3A.2: Plotting the output (static)
+
+```{r}
+ggplot(______, aes(x = ______, y = ______, color =______, group = ______)) + 
+    geom_line() +
+     theme_classic() +
+     xlab("Time (Day)") + 
+     ylab("Abundance") +
+    theme(axis.text = element_text(size = 12))
+```
+
+## 3A.3: Plotting the output (dynamic)
+
+```{r}
+animation <- ggplot(______, aes(x = ______, y = ______, color =______, group = ______)) + 
+
+  geom_line() +
+  theme_classic() +
+  xlab("Time (Day)") +
+  ylab("Abundance") +
+  transition_reveal(______) +
+  theme(axis.text = element_text(size = 12))
+
+animate(animation, duration = 15) 
+
+```
+
+# 4. LOTKA-VOLTERRA PREDATOR PREY MODEL (PHASEPLOT)
+## 4A.1: Creating a function to calculate nullclines
+
+
+```{r}
+calculate_nullclines <- function(param_df){
+ v_nullcline <- param_df["mu"]/_____
+ p_nullcline <- _____/param_df["k"]
+
+ return(data.frame(V_null = v_nullcline, P_null = p_nullcline))
+}
+
+null_cline_df <- calculate_nullclines(param)
+```
+
+## 4A.2: Plotting the nullclines
+
+```{r}
+basis_gg<- ggplot() + 
+  geom_vline(xintercept  =______________________, color = 'red') + 
+  geom_hline(yintercept = ______________________, color = 'blue') + 
+  annotate("point", x = null_cline_df[,"V_null"], y = null_cline_df[,"P_null"] ) +
+  xlab("______________________") + 
+  ylab("______________________") + 
+  theme_classic()
+```
+
+## 4A.3: Plotting the trajectory
+
+```{r}
+basis_gg + 
+  geom_path(data = lv_results_____________)
+```
+
+## 4A.4: Plotting the trajectory (dynamic)
+
+
+```{r}
+animation_2<- basis_gg + 
+  geom_path(data = lv_results,aes(x = V, y = P )) + 
+  geom_point(data = lv_results,aes(x = V, y = P ), size = 3) + 
+  __________________
+  theme(axis.text = element_text(size = 12))
+
+animate(animation_2, duration = 15) 
+```
+
+
+# 5. LOTKA-VOLTERRA PREDATOR PREY MODEL (ADVANCE)
+## 5A.1: Adding constraint to our prey's growth
+
+
+
+```{r}
+LV_prey_pred_C <- function(t, state, param) {
+  with(as.list(c(state, param)), {
+    
+    dV <- _____________ - (b * V * P)
+    dP <- (a * b * V * P) -  mu * P
+
+    return(list(c(V = dV, P = dP)))
+  })
+}
+
+times <- seq(1,365, 0.1) # 5 years
+param_C <- c(r= 0.25, b = 0.05, a = 0.5, mu = 0.2, C = 20)
+states <- c(V = 1,P = 2)
+
+lv_results_C <- data.frame(ode(y = states, times = times, func = LV_prey_pred_C, parms = param_C))
+
+```
+
+## 5A.2: Visualizing dynamics (static)
+
+```{r}
+lv_results_C_melt <- melt(lv_results_C, id.vars = 'time')
+```
+
+So let's plot it out:
+
+```{r}
+ggplot(lv_results_C_melt, aes(x = time, y = value, color = variable, group = variable)) + 
+    geom_line() +
+     theme_classic() +
+     xlab("Time (Day)") + 
+     ylab("Abundance") +
+    theme(axis.text = element_text(size = 12))
+```
+
+## 5A.3: Visualizing dynamics (dynamic)
+
+```{r}
+animation_3 <- ggplot(lv_results_C, aes(x = V, y = P)) +
+    xlab("Prey") + 
+    ylab("Predator") + 
+    geom_path() + 
+    theme_classic() + 
+    transition_reveal(time) 
+
+animate(animation_3, duration = 15) 
+
+```

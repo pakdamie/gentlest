@@ -5,6 +5,7 @@
 As an exercise, can you think of ways to make the model more realistic? This could be a good way to practice differential equation modeling. For example, consider the assumptions we made in the model:
 
 1. Prey grow exponentially. (In reality, the population growth of rabbits is probably limited by available vegetation.)
+
 2. The consumption of prey increases linearly with prey density. (In reality, predators can become satiated.)
 
 ## Moving to other ODE models

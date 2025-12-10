@@ -275,7 +275,8 @@ window.Quarto = {
 <section id="hello-silicon-world" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="hello-silicon-world"><span class="header-section-number">4.1</span> Hello (silicon) world!</h2>
 <p>For our first foray into mathematical modeling, let’s start with the model: <strong>how does the size of a population change over time?</strong> Assume we’re observing a population on an isolated island, <span class="math inline">\(N\)</span> (which stands for the number of individuals), and we must think of the time scale, <span class="math inline">\(t\)</span>. For fast-growing organisms like bacteria, it would make more sense to observe the population over the span of hours, as they grow rapidly. It would be unwise, however, to use hours for a slow-growing oak tree. For this population of interest, let us assume a daily time step.</p>
-<p>The size of the population increases due to new individuals from births or immigration. Likewise, the population decreases due to deaths or from emigration. For simplicity, let’s assume that there are only births and deaths. Mathematically, we can describe the population as: <span class="math display">\[
+<p>The size of the population increases due to new individuals from births or immigration. Likewise, the population decreases due to deaths or from emigration. For simplicity, let’s assume that there are only births and deaths. Mathematically, we can describe the population as:</p>
+<p><span class="math display">\[
 N_{t+1} = N_t + Births - Deaths.
 \]</span></p>
 <p>This model assumes <em>discrete</em> time steps where the total population size is the next-time step (<span class="math inline">\(t+1\)</span>) is just the sum of the current timestep (<span class="math inline">\(t\)</span>) with the addition and removal of individuals.</p>
@@ -286,7 +287,7 @@ N_{t+1} = N_t + Births - Deaths.
 <p><span class="math display">\[
 Births = b N_t,
 \]</span></p>
-<p>where <span class="math inline">\(b\)</span> is the daily per-capita birth rate, or the number of births per individual in the population per unit-time. For example, if <span class="math inline">\(b = 0.10\)</span>, it would say that each individual should produce 0.10 of an individual. In a population of 100 individuals, 10 new individuals should then be born. This intuition works similarly for deaths: the more individuals there are in a population, the more deaths will occur. Similarly,</p>
+<p>where <span class="math inline">\(b\)</span> is the daily per-capita birth rate, or the number of births per individual in the population per unit-time. For example, if <span class="math inline">\(b = 0.10\)</span>, it would say that each <em>individual should produce 0.10 of an individual</em>. In a population of 100 individuals, 10 new individuals should then be born. This intuition works similarly for deaths: the more individuals there are in a population, the more deaths will occur. Similarly,</p>
 <p><span class="math display">\[
 Deaths = d N_t,
 \]</span></p>
@@ -301,11 +302,10 @@ N_{t+1} &amp;= N_t + bN_t - dN_t \\
 <p><span class="math display">\[
 N_{t+1} = N_t(1 + r),
 \]</span></p>
-<p>and we find that as</p>
+<p>and by rearranging the above equation we can then calculate the change in the population:</p>
 <p><span class="math display">\[
-\frac{N_{t+1}}{N_t} = (1+r),
+\frac{N_{t+1}}{N_t} = (1+r).
 \]</span></p>
-<p>meaning that <span class="math inline">\((1+r)\)</span> describes how the population change.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -316,7 +316,7 @@ Finite rate of increase
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The term <span class="math inline">\((1+r)\)</span> also has a name called the finite rate of increase. Usually it is replaced by <span class="math inline">\(\lambda\)</span> and so the above model is usually seen as <span class="math inline">\(N_{t+1} = \lambda N_t\)</span></p>
+<p>The term <span class="math inline">\((1+r)\)</span> is also called the <strong>finite rate of increase</strong> and is often represented by <span class="math inline">\(\lambda\)</span>. So the above model is usually seen as <span class="math inline">\(N_{t+1} = \lambda N_t\)</span></p>
 </div>
 </div>
 </section>
@@ -393,7 +393,7 @@ A simple example of vectorization
 </div>
 <p>You see now that the output is a data.frame that will have the same number of rows equal to <code>time</code>, the population size at the time, as well as the three parameters: birth rate, death rate, and the initial population size. Now let’s try running it:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>popGrowth_df <span class="ot">&lt;-</span> <span class="fu">pop_Growth</span>(<span class="at">time =</span> <span class="dv">25</span>, <span class="at">b =</span> <span class="fl">0.5</span>, <span class="at">d=</span> <span class="fl">0.1</span>, <span class="at">N0 =</span> <span class="dv">100</span>)</span>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>popGrowth_df <span class="ot">&lt;-</span> <span class="fu">pop_Growth</span>(<span class="at">time =</span> <span class="dv">25</span>, <span class="at">b =</span> <span class="fl">0.5</span>, <span class="at">d =</span> <span class="fl">0.1</span>, <span class="at">N0 =</span> <span class="dv">100</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(popGrowth_df, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   time_step         N   b   d  N0

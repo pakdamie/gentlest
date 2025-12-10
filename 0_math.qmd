@@ -4,18 +4,17 @@ We will be working with ordinary differential equations (ODEs), which we describ
 
 ::: {.callout-tip}
 ## Resources to learn derivatives
-I really like the [Calculus in Context](http://www.science.smith.edu/~callahan/intromine.html) which is absolutely free. Check out the chapter for the derivative. Also the famous Paul's Online Notes would be great. Finally, @otto2011biologist has a nice appendix on the basic calculus rules that you will need to know.
+For a recap, I recommend the free textbook [Calculus in Context](http://www.science.smith.edu/~callahan/intromine.html). Also [Paul's Online Notes](https://tutorial.math.lamar.edu/classes/calci/DerivativeIntro.aspx) would be great. Finally, @otto2011biologist has a nice appendix on the basics of calculus.
 :::
 
 ```{r, echo= FALSE}
 library(ggplot2)
-library(ggimage)
 ```
 
 ### What is a derivative?
-Fundamentally, a **derivative** describes the **rate of change** as we are interested in how rapidly a quantity changes. For example, in many ecological models, we are often interested in how the size of the population changes over time. Graphically, the derivative can be the tangent line at a specific point:
+Fundamentally, a **derivative** describes the **rate of change** as we are interested in how rapidly a quantity changes. For example, in many ecological models, we are often interested in how the size of the population changes over time. Graphically, the derivative can be described by the tangent line at a specific point:
 
-![Placeholder: Derivatives are the slope of the tangent lines (dashed-red lines) at different points ](image/slopes.png){width="667"}
+![Placeholder: Derivatives are the slope of the tangent lines (dashed-red lines) at different points](image/slopes.png){width="667"}
 
 The more formal definition of a derivative is:
 
@@ -23,11 +22,11 @@ $$
 \lim_{h\to 0} \frac{f(x + h) - f(x)}{h}.
 $$ 
 
-This equation says that the derivative of a function $f$ at a point $x$ is found by taking the difference between the function's value at $x+h$
-and at $x$, and then dividing by $h$. We then imagine making $h$ very, very small---that is, letting $h$
+Here, the derivative of the function $f$ at point $x$ is found by taking the difference between the function's value at $x+h$
+and at $x$, and then dividing by $h$. We can make $h$ very, very small---that is, letting $h$
 approach $0$. The limit of this expression as $h \to 0$ gives the instantaneous rate of change of the function at $x$, which is the derivative.
 
-In a car analogy, the speedometer shows how fast we are going. As I'm driving through Boston, there may be moments when I'm driving very fast but then brake suddenly. Let's say you're taking a photo from the back seat of the car. When you take a snapshot, you're capturing the instantaneous rate of change.
+In a car analogy, the speedometer shows how fast we are going. As I'm driving through Boston, there may be moments when I'm driving very fast but then brake suddenly. Let's say you're taking a photo of my speedometer from the back seat of the car. When you take a snapshot, you're capturing the instantaneous rate of change.
 
 ## Connection with differential equations
 

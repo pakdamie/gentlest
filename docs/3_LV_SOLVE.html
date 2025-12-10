@@ -312,8 +312,8 @@ y_2 = y_1 + (1)(1) = 4
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>LV_prey_pred <span class="ot">&lt;-</span> <span class="cf">function</span>(t, state, param) {</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">with</span>(<span class="fu">as.list</span>(<span class="fu">c</span>(state, param)), {</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    dV <span class="ot">&lt;-</span> (r <span class="sc">*</span> V) <span class="sc">-</span> (b <span class="sc">*</span> V <span class="sc">*</span> P)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    dP <span class="ot">&lt;-</span> (a <span class="sc">*</span> b <span class="sc">*</span> V <span class="sc">*</span> P) <span class="sc">-</span>  mu <span class="sc">*</span> P</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    dV <span class="ot">&lt;-</span> (r <span class="sc">*</span> V) <span class="sc">-</span> (k <span class="sc">*</span> V <span class="sc">*</span> P)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    dP <span class="ot">&lt;-</span> (a <span class="sc">*</span> k <span class="sc">*</span> V <span class="sc">*</span> P) <span class="sc">-</span>  mu <span class="sc">*</span> P</span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">list</span>(<span class="fu">c</span>(<span class="at">V =</span> dV, <span class="at">P =</span> dP)))</span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  })</span>
@@ -325,7 +325,7 @@ y_2 = y_1 + (1)(1) = 4
 </div>
 <p>And for parameters, we need to think about the rates and that everything would be in time. The model itself is agnostic to time, nothing about the model formulation would change if we want to work in terms of a month or a year, only the rates which we would have to convert.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>param <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">r=</span> <span class="dv">1</span>, <span class="at">b =</span> <span class="fl">0.02</span>, <span class="at">a =</span> <span class="fl">0.5</span>, <span class="at">mu =</span> <span class="fl">0.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>param <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">r=</span> <span class="dv">1</span>, <span class="at">k =</span> <span class="fl">0.02</span>, <span class="at">a =</span> <span class="fl">0.5</span>, <span class="at">mu =</span> <span class="fl">0.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>and the states are:</p>
 <div class="cell">
@@ -371,8 +371,8 @@ The default solver in deSolve is called LSODA
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>LV_prey_pred_mistake <span class="ot">&lt;-</span> <span class="cf">function</span>(t, state, param) {</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">with</span>(<span class="fu">as.list</span>(<span class="fu">c</span>(state, param)), {</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    dV <span class="ot">&lt;-</span> (r <span class="sc">*</span> V) <span class="sc">+</span> (b <span class="sc">*</span> V <span class="sc">*</span> P) <span class="co"># The number of prey increases... with predation</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    dP <span class="ot">&lt;-</span> (a <span class="sc">*</span> b <span class="sc">*</span> V <span class="sc">*</span> P) <span class="sc">-</span>  mu <span class="sc">*</span> P</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    dV <span class="ot">&lt;-</span> (r <span class="sc">*</span> V) <span class="sc">+</span> (k <span class="sc">*</span> V <span class="sc">*</span> P) <span class="co"># The number of prey increases... with predation</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    dP <span class="ot">&lt;-</span> (a <span class="sc">*</span> k <span class="sc">*</span> V <span class="sc">*</span> P) <span class="sc">-</span>  mu <span class="sc">*</span> P</span>
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">list</span>(<span class="fu">c</span>(<span class="at">V =</span> dV, <span class="at">P =</span> dP)))</span>
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  })</span>

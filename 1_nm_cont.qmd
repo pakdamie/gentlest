@@ -1,6 +1,6 @@
 # Segway: Discrete to continuous
 
-Previously, the model we were looking at was in discrete time, but the compartmental model we’re examining now is in continuous time. Discrete time makes intuitive sense to us—we tend to think of our daily lives in terms of days. But a continuous model requires thinking in terms of a continuum: a day can be divided into hours, minutes, seconds, milliseconds, and even finer intervals. This represents the infinitesimal time scale of continuous time. We like this approach because it is mathematically tractable. Remember our original equation is:
+Previously, the model we were looking at was in discrete time, but the compartmental model we’re examining now is in continuous time. Discrete time makes intuitive sense to us because we tend to think of our daily lives in terms of days. But a continuous model requires thinking in terms of a continuum: a day can be divided into hours, minutes, seconds, milliseconds, and even finer intervals. This represents the infinitesimal time scale of continuous time. The choice between discrete and continuous time depend on the biological system. For organisms that reproduce once a year such as the Pacific salmon, discrete time may be better to a colony of bacteria that is continually   Remember our original equation is:
 
 $$
 N_{t+1} = N_t(1 + r),
@@ -12,7 +12,7 @@ $$
 N_{t+1} - N_t = r(N_t),
 $$
 
-which can be simply explained as the change in the population size between $t$ and $t+1$ is $r(N_t)$. We're taking daily time steps, but we can also take much smaller time steps. To signify this we use the term $\Delta t$ :
+which can be simply explained as the change in the population size between $t$ and $t+1$ is $rN_t$. We're taking daily time steps, but we can also take much smaller time steps. To signify this we use the term $\Delta t$ :
 
 $$
 N_{t + \Delta t} - N_t = \Delta t (r) N_t,

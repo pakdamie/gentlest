@@ -9,6 +9,7 @@ library(ggplot2)
 For our first foray into mathematical modeling, let's start with the model: **how does the size of a population change over time?** Assume we're observing a population on an isolated island, $N$ (which stands for the number of individuals), and we must think of the time scale, $t$. For fast-growing organisms like bacteria, it would make more sense to observe the population over the span of hours, as they grow rapidly. It would be unwise, however, to use hours for a slow-growing oak tree. For this population of interest, let us assume a daily time step.
 
 The size of the population increases due to new individuals from births or immigration. Likewise, the population decreases due to deaths or from emigration. For simplicity, let's assume that there are only births and deaths. Mathematically, we can describe the population as:
+
 $$
 N_{t+1} = N_t + Births - Deaths.
 $$
@@ -23,7 +24,7 @@ $$
 Births = b N_t,
 $$
 
-where $b$ is the daily per-capita birth rate, or the number of births per individual in the population per unit-time. For example, if $b = 0.10$, it would say that each individual should produce 0.10 of an individual. In a population of 100 individuals, 10 new individuals should then be born. This intuition works similarly for deaths: the more individuals there are in a population, the more deaths will occur. Similarly, 
+where $b$ is the daily per-capita birth rate, or the number of births per individual in the population per unit-time. For example, if $b = 0.10$, it would say that each *individual should produce 0.10 of an individual*. In a population of 100 individuals, 10 new individuals should then be born. This intuition works similarly for deaths: the more individuals there are in a population, the more deaths will occur. Similarly, 
 
 $$
 Deaths = d N_t,
@@ -40,22 +41,21 @@ $$
 
 Because $b$ and $d$ are in the same units, we can combine them as $r = b - d$ with $r$ being called the *geometric rate of increase*. What happens if $r = 0$? That means $b = d$, so the number of births and deaths is equal, and the population size does not change. If $r > 0$, then there are more births than deaths, and the population will increase. Likewise, if $r < 0$, there are more deaths than births, so the population will decrease. Thus, our final model is:
 
-
 $$
 N_{t+1} = N_t(1 + r),
 $$
 
-and we find that as 
+and by rearranging the above equation we can then calculate the change in the population:
 
 $$
-\frac{N_{t+1}}{N_t} = (1+r),
+\frac{N_{t+1}}{N_t} = (1+r).
 $$
 
-meaning that $(1+r)$ describes how the population change.
+
 
 ::: {.callout-tip}
 ## Finite rate of increase
-The term $(1+r)$ also has a name called the finite rate of increase. Usually it is replaced by $\lambda$ and so the above model is usually seen as $N_{t+1} = \lambda N_t$
+The term $(1+r)$ is also called the **finite rate of increase** and is often represented by $\lambda$. So the above model is usually seen as $N_{t+1} = \lambda N_t$
 :::
 
 ## What does the future hold?
@@ -128,9 +128,8 @@ pop_Growth <- function(time, b, d, N0){
 You see now that the output is a data.frame that will have the same number of rows equal to `time`, the population size at the time, as well as the three parameters: birth rate, death rate, and the initial population size. Now let's try running it:
 
 ```{r}
-popGrowth_df <- pop_Growth(time = 25, b = 0.5, d= 0.1, N0 = 100)
+popGrowth_df <- pop_Growth(time = 25, b = 0.5, d = 0.1, N0 = 100)
 head(popGrowth_df, 10)
-
 ```
 
 Congratulations, you ran your first model!
